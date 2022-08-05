@@ -28,9 +28,9 @@ namespace Assets.Scripts
             _instance = this;
         }
 
-        public void Upgrade(Upgrades upgrade)
+        public void Upgrade(/*Upgrades upgrade*/)
         {
-            switch (upgrade)
+/*            switch (upgrade)
             {
                 case Upgrades.SPEED:
                     Speed++;
@@ -50,7 +50,7 @@ namespace Assets.Scripts
                 case Upgrades.EXPLOSION:
                     Explosion++;
                     break;
-            }
+            }*/
         }
         
         public enum Upgrades
