@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Assets.Scripts
 {
@@ -13,6 +15,13 @@ namespace Assets.Scripts
                 if (_instance == null) Debug.LogError("Gamemanager is null");
                 return _instance;
             }
+        }
+
+        public UnityEvent UpGradeEvent = new();
+
+        internal int GetHealth()
+        {
+            throw new NotImplementedException();
         }
 
         public int UpgradePoints = 0;
@@ -55,6 +64,7 @@ namespace Assets.Scripts
                     break;
             }
             UpgradePoints--;
+            UpGradeEvent.Invoke();
         }
         
         public enum Upgrades
