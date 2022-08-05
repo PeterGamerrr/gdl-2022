@@ -18,6 +18,7 @@ namespace Assets.Scripts
         public int Speed = 0;
         public int Health = 0;
         public int GunRpm = 0;
+        public int Damage = 0;
         public int BulletCount = 0;
         public int Piercing = 0;
         public int Explosion = 0;
@@ -57,6 +58,7 @@ namespace Assets.Scripts
             SPEED,
             HEALTH,
             GUNRPM,
+            DAMAGE,
             BULLETCOUNT,
             PIERCING,
             EXPLOSION
