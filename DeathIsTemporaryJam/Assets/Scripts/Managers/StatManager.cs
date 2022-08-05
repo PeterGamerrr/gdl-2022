@@ -15,6 +15,8 @@ namespace Assets.Scripts
             }
         }
 
+        public int UpgradePoints = 0;
+
         public int Speed = 0;
         public int Health = 0;
         public int GunRpm = 0;
@@ -28,9 +30,10 @@ namespace Assets.Scripts
             _instance = this;
         }
 
-        public void Upgrade(/*Upgrades upgrade*/)
+        public void Upgrade(Upgrades upgrade)
         {
-/*            switch (upgrade)
+            if (UpgradePoints < 1) return;
+            switch (upgrade)
             {
                 case Upgrades.SPEED:
                     Speed++;
@@ -50,7 +53,8 @@ namespace Assets.Scripts
                 case Upgrades.EXPLOSION:
                     Explosion++;
                     break;
-            }*/
+            }
+            UpgradePoints--;
         }
         
         public enum Upgrades
@@ -64,5 +68,40 @@ namespace Assets.Scripts
             EXPLOSION
         }
 
+        public void UpgradeSpeed()
+        {
+            Upgrade(Upgrades.SPEED);
+        }
+
+        public void UpgradeHealth()
+        {
+            Upgrade(Upgrades.HEALTH);
+        }
+
+        public void UpgradeGunRpm()
+        {
+            Upgrade(Upgrades.GUNRPM);
+        }
+        public void UpgradeDamage()
+        {
+            Upgrade(Upgrades.DAMAGE);
+        }
+        public void UpgradeBulletCount()
+        {
+            Upgrade(Upgrades.BULLETCOUNT);
+        }
+        public void UpgradePiercing()
+        {
+            Upgrade(Upgrades.PIERCING);
+        }
+        public void UpgradeExplosion()
+        {
+            Upgrade(Upgrades.EXPLOSION);
+        }
+
+        public void GiveUpgradePoint()
+        {
+            UpgradePoints++;
+        }
     }
 }
