@@ -7,8 +7,10 @@ using UnityEngine.Events;
 public class LivesController : MonoBehaviour
 {
     public UnityEvent GameOverEvent = new();
+    public List<GameObject> LivesList = new();
 
-    public int lives = 5;
+    public int Lives = 5;
+
 
     private void Start()
     {
@@ -17,8 +19,19 @@ public class LivesController : MonoBehaviour
 
     private void DeathEventListener()
     {
-        lives--;
-        if (lives <= 0) GameOver();
+        if (Lives <= 0)
+        {
+            GameOver();
+            return;
+        } 
+        Lives--;
+        if (LivesList != null && LivesList.Count > 0)
+        {
+            for (int i = 0; i < LivesList.Count; i++)
+            {
+                LivesList[i].gameObject.SetActive(i <= Lives);
+            }
+        }
     }
 
     private void GameOver()
