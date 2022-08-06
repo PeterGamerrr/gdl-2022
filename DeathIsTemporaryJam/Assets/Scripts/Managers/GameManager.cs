@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     {
         UpgradeMenu.SetActive(true);
         HealthBar.SetActive(false);
-        StatManager.Instance.GiveUpgradePoint(1);
+        StatManager.Instance.GiveUpgradePoint(100);
     }
 
     public void ContinueAfterDeath()
