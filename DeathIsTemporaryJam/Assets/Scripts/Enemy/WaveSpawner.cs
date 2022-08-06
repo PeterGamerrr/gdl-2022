@@ -123,14 +123,11 @@ public class WaveSpawner : MonoBehaviour
 
     void UpdateWaves()
     {
-
-
         if (waveEnded)
         {
             waveEnded = false;
             StartCoroutine(SpawnNextWave());
         }
-
     }
 
 }
