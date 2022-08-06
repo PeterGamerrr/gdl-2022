@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,7 +42,7 @@ public class Shooting : MonoBehaviour
         if (timeStamp <= Time.time)
         {
             Fire();
-            timeStamp = Time.time + shootCooldown;
+            timeStamp = Time.time + shootCooldown - Mathf.Min(Mathf.Sqrt(StatManager.Instance.GunRpm),(float) (shootCooldown * 0.8));
         }
     }
 

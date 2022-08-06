@@ -2,7 +2,8 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
-
+using UnityEngine.UI;
+using TMPro;
 namespace Assets.Scripts
 {
     public class StatManager : MonoBehaviour
@@ -29,6 +30,15 @@ namespace Assets.Scripts
         public int BulletCount = 0;
         public int Piercing = 0;
         public int Explosion = 0;
+
+        public TextMeshProUGUI SpeedVisual;
+        public TextMeshProUGUI HealthVisual;
+        public TextMeshProUGUI GunVisual;
+        public TextMeshProUGUI DamageVisual;
+        public TextMeshProUGUI BulletCountVisual;
+        public TextMeshProUGUI PiercingVisual;
+        public TextMeshProUGUI ExplosionVisual;
+        public TextMeshProUGUI UpgradesVisual;
 
         private void Awake()
         {
@@ -57,6 +67,9 @@ namespace Assets.Scripts
                     break;
                 case Upgrades.EXPLOSION:
                     Explosion++;
+                    break;
+                case Upgrades.DAMAGE:
+                    Damage++;
                     break;
             }
             UpgradePoints--;
@@ -109,9 +122,21 @@ namespace Assets.Scripts
             Upgrade(Upgrades.EXPLOSION);
         }
 
-        public void GiveUpgradePoint()
+        public void GiveUpgradePoint(int amount)
         {
-            UpgradePoints++;
+            UpgradePoints += amount;
+        }
+
+        private void Update()
+        {
+            BulletCountVisual.text = "" + BulletCount;
+            DamageVisual.text = "" + Damage;
+            ExplosionVisual.text = "" + Explosion;
+            GunVisual.text = "" + GunRpm;
+            HealthVisual.text = "" + Health;
+            PiercingVisual.text = "" + Piercing;
+            SpeedVisual.text = "" + Speed;
+            UpgradesVisual.text = "" + UpgradePoints;
         }
     }
 }

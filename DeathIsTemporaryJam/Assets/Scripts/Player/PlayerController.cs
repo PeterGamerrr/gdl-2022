@@ -1,3 +1,5 @@
+using Assets.Scripts;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +7,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
+    [SerializeField] float moveSpeedMul;
     [SerializeField] private float acceleration;
     [SerializeField] private float decceleration;
     [SerializeField] private float velPower;
@@ -23,6 +26,11 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        StatManager.Instance.UpGradeEvent.AddListener(OnUpgrade);
+    }
+
+    private void OnUpgrade()
+    {
     }
 
     void Update()
@@ -53,7 +61,7 @@ public class PlayerController : MonoBehaviour
 
     void MovePlayer()
     {
-        rb.MovePosition(rb.position + moveDir * moveSpeed * Time.deltaTime);
+        rb.MovePosition(rb.position + moveDir * moveSpeed * Time.deltaTime * (float) Math.Pow(moveSpeedMul,StatManager.Instance.Speed));
 
         /*        float targetSpeed = horizontalInput * moveSpeed;
                 float speedDif = targetSpeed - rb.velocity.magnitude;
