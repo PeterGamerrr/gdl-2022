@@ -19,10 +19,6 @@ namespace Assets.Scripts
 
         public UnityEvent UpGradeEvent = new();
 
-        internal int GetHealth()
-        {
-            throw new NotImplementedException();
-        }
 
         public int UpgradePoints = 0;
 
@@ -77,8 +73,12 @@ namespace Assets.Scripts
             PIERCING,
             EXPLOSION
         }
+        public int GetHealth()
+        {
+            return 100 + Health * 10;
+        }
 
-        public void UpgradeSpeed()
+        public void UpgradeSpeed() 
         {
             Upgrade(Upgrades.SPEED);
         }
