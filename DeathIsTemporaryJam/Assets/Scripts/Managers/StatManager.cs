@@ -122,21 +122,21 @@ namespace Assets.Scripts
             Upgrade(Upgrades.EXPLOSION);
         }
 
-        public void GiveUpgradePoint()
+        public void GiveUpgradePoint(int amount)
         {
-            UpgradePoints++;
+            UpgradePoints += amount;
         }
 
         private void Update()
         {
-            BulletCountVisual.text = "5" + BulletCount;
-            DamageVisual.text = "5" + Damage;
-            ExplosionVisual.text = "5" + Explosion;
-            GunVisual.text = "5" + GunRpm;
-            HealthVisual.text = "5" + Health;
-            PiercingVisual.text = "5" + Piercing;
-            SpeedVisual.text = "5" + Speed;
-            UpgradesVisual.text = "5" + UpgradePoints;
+            BulletCountVisual.text = "" + BulletCount;
+            DamageVisual.text = "" + Damage;
+            ExplosionVisual.text = "" + Explosion;
+            GunVisual.text = "" + GunRpm;
+            HealthVisual.text = "" + Health;
+            PiercingVisual.text = "" + Piercing;
+            SpeedVisual.text = "" + Speed;
+            UpgradesVisual.text = "" + UpgradePoints;
         }
     }
 }

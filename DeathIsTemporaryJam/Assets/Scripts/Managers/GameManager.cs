@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -44,14 +45,14 @@ public class GameManager : MonoBehaviour
     {
         UpgradeMenu.SetActive(true);
         HealthBar.SetActive(false);
-        
+        StatManager.Instance.GiveUpgradePoint(1);
     }
 
     public void ContinueAfterDeath()
     {
         UpgradeMenu.SetActive(false);
         HealthBar.SetActive(true);
-
+        HealthController.ResetHealth();
     }
 
     public void OnGameOver()
