@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shooting : MonoBehaviour
+public class EnemyShooting : MonoBehaviour
 {
+
     [SerializeField] GameObject bullet;
     [SerializeField] Transform bulletParent;
     [SerializeField] Transform shootingPoint;
@@ -12,7 +13,6 @@ public class Shooting : MonoBehaviour
     [SerializeField] float shootCooldown;
     [SerializeField] int amountOfBullets;
     [SerializeField] int damage;
-    [SerializeField] int piercing;
 
     private Vector2 direction;
 
@@ -21,23 +21,18 @@ public class Shooting : MonoBehaviour
 
     private float timeStamp = 0;
 
+    public Transform target;
+
 
     void Update()
     {
-/*        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Fire();
-        }*/
 
-        if (Input.GetKey(KeyCode.Space))
-        {
-            Shoot();
-        }
     }
 
-    
-    void Shoot()
+
+    public void Shoot()
     {
+        Debug.LogWarning("Shoot Method Call");
         if (timeStamp <= Time.time)
         {
             Fire();
@@ -47,12 +42,12 @@ public class Shooting : MonoBehaviour
 
     void Fire()
     {
+        Debug.LogWarning("Fired Bullet");
         Bullet bulletScript;
-        direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        direction = target.position - transform.position;
         bulletObject = Instantiate(bullet, shootingPoint.position, transform.rotation, bulletParent);
         bulletScript = bulletObject.GetComponent<Bullet>();
         bulletScript.Damage = damage;
-        bulletScript.Piercing = piercing;
         bulletRB = bulletObject.GetComponent<Rigidbody2D>();
         bulletRB.AddForce(direction.normalized * bulletSpeed);
     }

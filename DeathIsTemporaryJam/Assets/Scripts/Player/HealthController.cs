@@ -14,7 +14,7 @@ public class HealthController : MonoBehaviour
 
     public void Start()
     {
-        StatManager.Instance.UpGradeEvent.AddListener(UpgradeEvent);
+        StatManager.Instance.UpGradeEvent.AddListener(UpgradeEvent); 
     }
 
     private void UpgradeEvent()

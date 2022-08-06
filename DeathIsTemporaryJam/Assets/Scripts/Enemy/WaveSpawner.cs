@@ -105,7 +105,7 @@ public class WaveSpawner : MonoBehaviour
             waveEnemies.Add(enemy);
             enemyHealth = enemy.GetComponent<EnemyHealthManager>();
             enemyHealth.EnemyDeathEvent.AddListener(EnemyDeathListener);
-        }
+        }   
     }
 
     void SpawnWaves(int wave)

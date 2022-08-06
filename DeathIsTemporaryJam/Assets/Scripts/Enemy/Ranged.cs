@@ -3,17 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Melee : MonoBehaviour
+public class Ranged : MonoBehaviour
 {
+
     [Header("Config Values")]
-    [SerializeField] public float attackRange;
-    [SerializeField] float attackCooldown;
+    [SerializeField] float attackRange;
+    [SerializeField] int attackCooldown;
     [SerializeField] int attackDamage;
     [SerializeField] HealthController healthController;
 
     AIDestinationSetter destinationSetter;
     Transform player;
-
+    EnemyShooting shooting;
 
     private bool isAttacking = false;
 
@@ -22,8 +23,11 @@ public class Melee : MonoBehaviour
         destinationSetter = GetComponent<AIDestinationSetter>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
-        healthController = player.GetComponent<HealthController>();
         destinationSetter.target = player;
+
+        shooting = GetComponent<EnemyShooting>();
+
+        shooting.target = player;
     }
 
 
@@ -37,39 +41,33 @@ public class Melee : MonoBehaviour
     {
         Vector3 fixedPosition = new Vector3(transform.position.x, transform.position.y, player.transform.position.z);
         Vector3 distance = fixedPosition - player.transform.position;
+        Debug.Log(distance.magnitude);
         return distance.magnitude;
     }
 
     void CheckAttackDistance()
     {
-        Debug.Log(DistanceToPlayer());
         if (DistanceToPlayer() <= attackRange && !isAttacking)
         {
-            destinationSetter.target = transform;
-            Debug.LogWarning("In Range");
+            Debug.LogWarning("Within Attacking Range");
             StartCoroutine(AttackPlayer());
             isAttacking = true;
         }
 
         else if (DistanceToPlayer() >= attackRange)
         {
-            destinationSetter.target = player;
             isAttacking = false;
         }
     }
 
     IEnumerator AttackPlayer()
     {
-        Debug.LogWarning("Started Attacking Player");
-        healthController.Damage(attackDamage);
-        Debug.LogWarning("Damaged Player");
+        Debug.LogWarning("Started Player Attack");
+        shooting.Shoot();
         yield return new WaitForSeconds(attackCooldown);
-        if (DistanceToPlayer() < attackRange)
+        if (DistanceToPlayer() <= attackRange)
         {
-            Debug.LogWarning("Restart Cycle");
             StartCoroutine(AttackPlayer());
         }
-        Debug.LogWarning("Cycle Finished");
     }
-
 }

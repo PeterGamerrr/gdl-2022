@@ -304,10 +304,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd0269dbbfd1bd54ab0f60d5a23b8cce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minAttackDistance: 0
-  maxAttackDistance: 0
-  attackCooldown: 0
-  attackDamage: 0
+  attackRange: 2
+  attackCooldown: 0.5
+  attackDamage: 10
   healthController: {fileID: 0}
 --- !u!50 &-3196659152717244232
 Rigidbody2D:
