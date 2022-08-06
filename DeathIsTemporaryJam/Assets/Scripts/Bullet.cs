@@ -11,17 +11,12 @@ public class Bullet : MonoBehaviour
     EnemyHealthManager enemyHealthManager;
 
     
-    void Update()
-    {
-        
-    }
-
     void CheckPiercing()
     {
         if (Piercing > 0)
         {
             Piercing--;
-        } else
+        } else if (Piercing <=0)
         {
             Destroy(gameObject);
         }
@@ -36,9 +31,11 @@ public class Bullet : MonoBehaviour
             enemyHealthManager = collision.GetComponent<EnemyHealthManager>();
 
             enemyHealthManager.Damage(Damage);
+
             //damage
             Debug.Log("Damaged Enemy");
 
         }
+        CheckPiercing();
     }
 }

@@ -395,6 +395,7 @@ GameObject:
   - component: {fileID: 754516817}
   - component: {fileID: 754516816}
   - component: {fileID: 754516815}
+  - component: {fileID: 754516818}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -460,7 +461,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 754516814}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -468,6 +469,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &754516818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754516814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9381792d6005964985e0e54f4cc6e1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1450988832}
 --- !u!1 &854149444
 GameObject:
   m_ObjectHideFlags: 0
@@ -1066,8 +1080,8 @@ MonoBehaviour:
   bulletParent: {fileID: 742667440}
   shootingPoint: {fileID: 1949620278}
   bulletSpeed: 100
-  shootCooldown: 0.5
-  amountOfBullets: 10
+  shootCooldown: 0.25
+  amountOfBullets: 1
   damage: 20
   piercing: 0
 --- !u!114 &1450988835
