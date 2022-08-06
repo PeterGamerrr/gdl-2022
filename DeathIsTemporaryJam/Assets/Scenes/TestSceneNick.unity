@@ -395,6 +395,7 @@ GameObject:
   - component: {fileID: 754516817}
   - component: {fileID: 754516816}
   - component: {fileID: 754516815}
+  - component: {fileID: 754516818}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -460,7 +461,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 754516814}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -468,6 +469,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &754516818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754516814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9381792d6005964985e0e54f4cc6e1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1450988832}
 --- !u!1 &854149444
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,6 +714,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1157385213}
   - component: {fileID: 1157385212}
+  - component: {fileID: 1157385214}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -726,10 +741,10 @@ MonoBehaviour:
   player: {fileID: 1450988830}
   enemyParent: {fileID: 1157385213}
   spawnBuffer: 0
-  enemyLevelWaves: 
+  enemyLevelWaves: 0200000003000000
   currentEnemyLevel: 1
   startEnemyAmount: 10
-  waveMultiplier: 1.5
+  waveMultiplier: 1.1
   waveCooldownInSeconds: 5
 --- !u!4 &1157385213
 Transform:
@@ -746,6 +761,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1157385214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157385211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d502a463e58c6a44b314316f668f6ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1158334448
 GameObject:
   m_ObjectHideFlags: 0
@@ -916,7 +943,39 @@ MonoBehaviour:
     _MeshEdgeColor: {r: 0, g: 0, b: 0, a: 0.5}
     _AreaColors:
     - {r: 0, g: 0, b: 0, a: 0}
-  tagNames: []
+  tagNames:
+  - Basic Ground
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
   heuristic: 2
   heuristicScale: 1
   threadCount: 1
@@ -956,9 +1015,10 @@ GameObject:
   - component: {fileID: 1450988831}
   - component: {fileID: 1450988833}
   - component: {fileID: 1450988834}
+  - component: {fileID: 1450988835}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1033,8 +1093,28 @@ MonoBehaviour:
   bulletParent: {fileID: 742667440}
   shootingPoint: {fileID: 1949620278}
   bulletSpeed: 100
-  shootCooldown: 0.5
-  amountOfBullets: 10
+  shootCooldown: 0.25
+  amountOfBullets: 1
+  damage: 20
+  piercing: 0
+--- !u!114 &1450988835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450988830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94d82b920702e574c9d002ab2bc20cfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeathEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  MaxHealth: 100
+  Health: 100
+  HealthBar: {fileID: 0}
 --- !u!1 &1518457057
 GameObject:
   m_ObjectHideFlags: 0
