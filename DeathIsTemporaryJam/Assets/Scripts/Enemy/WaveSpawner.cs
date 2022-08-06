@@ -11,7 +11,7 @@ public class WaveSpawner : MonoBehaviour
 
     [SerializeField] float spawnBuffer;
 
-    [SerializeField] int[] enemyLevelWaves;
+    [SerializeField] List<int> enemyLevelWaves;
     [SerializeField] int currentEnemyLevel;
     [SerializeField] int startEnemyAmount;
     [SerializeField] float waveMultiplier;
@@ -32,13 +32,14 @@ public class WaveSpawner : MonoBehaviour
     private int currentAmountOfEnemies;
     private float currentWaveMultiplier;
     private List<GameObject> waveEnemies = new List<GameObject>();
-    private bool waveEnded = true;
 
 
     void Start()
     {
         cam = Camera.main;
         currentAmountOfEnemies = startEnemyAmount;
+
+        StartCoroutine(SpawnNextWave());
     }
 
 
@@ -49,10 +50,9 @@ public class WaveSpawner : MonoBehaviour
             StartCoroutine(SpawnNextWave());
         }
 
-        UpdateWaves();
-
 
     }
+
 
 
     Vector3 GetSpawnPosition()
@@ -95,11 +95,16 @@ public class WaveSpawner : MonoBehaviour
     {
         int randomMobID;
         Vector3 spawnPos;
+        GameObject enemy;
+        EnemyHealthManager enemyHealth;
         for (int i = 0; i < amountOfMobs; i++)
         {
             randomMobID = Random.Range(0, enemyLVL);
             spawnPos = GetSpawnPosition();
-            waveEnemies.Add(Instantiate(enemyTypes[randomMobID], spawnPos, transform.rotation, enemyParent));
+            enemy = Instantiate(enemyTypes[randomMobID], spawnPos, transform.rotation, enemyParent);
+            waveEnemies.Add(enemy);
+            enemyHealth = enemy.GetComponent<EnemyHealthManager>();
+            enemyHealth.EnemyDeathEvent.AddListener(EnemyDeathListener);
         }
     }
 
@@ -115,19 +120,36 @@ public class WaveSpawner : MonoBehaviour
     {
 
         IncreaseWave();
+        CheckEnemyLVL();
         Debug.Log("Spawning wave " + currentWave + " in " + waveCooldownInSeconds + " seconds.");
         yield return new WaitForSeconds(waveCooldownInSeconds);
         SpawnWaves(currentWave);
         Debug.Log("Spawned wave " + currentWave);
     }
 
-    void UpdateWaves()
+
+    void EnemyDeathListener(GameObject enemy)
     {
-        if (waveEnded)
+        if (waveEnemies.Contains(enemy))
         {
-            waveEnded = false;
+            waveEnemies.Remove(enemy);
+            Debug.Log("Killed Enemy");
+        }
+
+        if (waveEnemies.Count <= 0)
+        {
             StartCoroutine(SpawnNextWave());
         }
     }
+
+
+    void CheckEnemyLVL()
+    {
+        if (enemyLevelWaves.Contains(currentWave))
+        {
+            currentEnemyLevel++;
+        }
+    }
+    
 
 }

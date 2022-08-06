@@ -714,6 +714,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1157385213}
   - component: {fileID: 1157385212}
+  - component: {fileID: 1157385214}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -740,7 +741,7 @@ MonoBehaviour:
   player: {fileID: 1450988830}
   enemyParent: {fileID: 1157385213}
   spawnBuffer: 0
-  enemyLevelWaves: 
+  enemyLevelWaves: 0200000003000000
   currentEnemyLevel: 1
   startEnemyAmount: 10
   waveMultiplier: 1.1
@@ -760,6 +761,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1157385214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157385211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d502a463e58c6a44b314316f668f6ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1158334448
 GameObject:
   m_ObjectHideFlags: 0

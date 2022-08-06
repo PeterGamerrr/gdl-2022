@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 5652582379609188139}
   - component: {fileID: 5652582379609188136}
   - component: {fileID: 5652582379609188132}
+  - component: {fileID: 2806091524721326970}
   m_Layer: 0
   m_Name: Enemy_Yellow
   m_TagString: Enemy
@@ -231,6 +232,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1301198, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2806091524721326970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5652582379609188137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 142254e5a08520f498aa783189f51b34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyDeathEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  health: 50
 --- !u!1 &5652582379745851802
 GameObject:
   m_ObjectHideFlags: 0
