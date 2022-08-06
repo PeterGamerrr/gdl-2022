@@ -10,6 +10,8 @@ public class HealthController : MonoBehaviour
     public int MaxHealth = 100;
     public int Health = 100;
 
+    public GameObject HealthBar;
+
     public void Start()
     {
         StatManager.Instance.UpGradeEvent.AddListener(UpgradeEvent);
@@ -36,6 +38,19 @@ public class HealthController : MonoBehaviour
         Debug.Log("Die");
         DeathEvent.Invoke();
         ResetHealth();
+    }
+
+    private void UpdateHealthBar()
+    {
+        var rectTransform = (RectTransform) HealthBar.transform;
+        var parentRectTransform = (RectTransform) rectTransform.parent.transform;
+
+        rectTransform.sizeDelta = new Vector2(parentRectTransform.rect.width * Health / MaxHealth,parentRectTransform.rect.height);
+    }
+
+    private void Update()
+    {
+        UpdateHealthBar();
     }
 
 }
