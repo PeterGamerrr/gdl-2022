@@ -14,10 +14,15 @@ public class Bullet : MonoBehaviour
 
     [SerializeField] bool canDamagePlayer;
     [SerializeField] bool canDamageEnemy;
+    [SerializeField] bool hasExplosion;
 
     private void Start()
     {
-        explosion = GetComponent<Explosion>();
+        if (hasExplosion)
+        {
+            explosion = GetComponent<Explosion>();
+        }
+
     }
 
     void CheckPiercing()
@@ -27,7 +32,10 @@ public class Bullet : MonoBehaviour
             Piercing--;
         } else if (Piercing <=0)
         {
-            explosion.Explode();
+            if (hasExplosion)
+            {
+                explosion.Explode();
+            }
             Destroy(gameObject);
         }
     }

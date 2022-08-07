@@ -141,6 +141,7 @@ MonoBehaviour:
   Damage: 0
   canDamagePlayer: 0
   canDamageEnemy: 1
+  hasExplosion: 1
 --- !u!114 &44588135105967899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,5 +156,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 6
   damage: 75
-  canDamageEnemy: 1
   canDamagePlayer: 0
+  canDamageEnemy: 1
