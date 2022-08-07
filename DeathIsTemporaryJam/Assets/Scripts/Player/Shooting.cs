@@ -10,6 +10,7 @@ public class Shooting : MonoBehaviour
     [SerializeField] Transform bulletParent;
     [SerializeField] Transform shootingPoint;
     [SerializeField] PlayerController playerController;
+    [SerializeField] AudioSource castSound;
 
     [SerializeField] float bulletSpeed;
     [SerializeField] float shootCooldown;
@@ -70,9 +71,10 @@ public class Shooting : MonoBehaviour
     void Fire()
     {
         Bullet bulletScript;
+        castSound.Play();
         direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - shootingPoint.transform.position;
         shootRotation = RotateTowardsMouse();
-        bulletObject = Instantiate(bullet, shootingPoint.position, shootRotation, bulletParent);
+        bulletObject = Instantiate(bullet, shootingPoint.position, shootRotation, bulletParent); 
         bulletScript = bulletObject.GetComponent<Bullet>();
         bulletScript.Damage = damage + (int) (damage * 0.2 * damageMul);
         bulletScript.Piercing = piercing + piercingMul;

@@ -244,6 +244,7 @@ MonoBehaviour:
   attackCooldown: 1.2
   attackDamage: 25
   healthController: {fileID: 0}
+  animator: {fileID: 33859216}
 --- !u!50 &-3196659152717244232
 Rigidbody2D:
   serializedVersion: 4

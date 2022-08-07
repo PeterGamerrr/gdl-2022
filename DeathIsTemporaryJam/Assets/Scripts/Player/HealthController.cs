@@ -11,6 +11,7 @@ public class HealthController : MonoBehaviour
     public int Health = 100;
 
     public GameObject HealthBar;
+    [SerializeField] AudioSource hurtSound;
 
     public void Start()
     {
@@ -24,6 +25,7 @@ public class HealthController : MonoBehaviour
 
     public void Damage(int amount)
     {
+        hurtSound.Play();
         Health -= amount;
         if (Health <= 0) Die();
     }

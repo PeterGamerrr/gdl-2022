@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float velPower;
 
     [SerializeField] Animator animator;
+
     private Rigidbody2D rb;
 
 
@@ -22,10 +23,13 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveDir;
     public Vector2 movementVel;
 
+
     //rotation
     private Vector2 direction;
     private Vector2 mousePos;
     private Vector3 newScale;
+
+
 
 
     private void Start()
