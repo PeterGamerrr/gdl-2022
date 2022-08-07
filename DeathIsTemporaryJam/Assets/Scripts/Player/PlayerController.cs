@@ -61,8 +61,8 @@ public class PlayerController : MonoBehaviour
 
     void MovePlayer()
     {
-        movementVel = moveDir * moveSpeed * Time.deltaTime * (float)Math.Pow(moveSpeedMul, StatManager.Instance.Speed);
-        rb.MovePosition(rb.position + movementVel);
+        movementVel = rb.position + moveDir * moveSpeed * Time.deltaTime * (float)Math.Pow(moveSpeedMul, StatManager.Instance.Speed);
+        rb.MovePosition(movementVel);
 
         /*        float targetSpeed = horizontalInput * moveSpeed;
                 float speedDif = targetSpeed - rb.velocity.magnitude;
