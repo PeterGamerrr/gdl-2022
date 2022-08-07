@@ -3444,13 +3444,13 @@ MonoBehaviour:
   - {fileID: 7362102221699646899, guid: 01c2b596a318a32499e9b40139dda85e, type: 3}
   - {fileID: 6408164155551773269, guid: 80f0d4f5fb99a3c40853e6fa324ec121, type: 3}
   - {fileID: 5652582379609188137, guid: 97695ac78dce2f9429ee3d8047b884c9, type: 3}
-  player: {fileID: 1401664040}
-  enemyParent: {fileID: 1571813583}
+  player: {fileID: 0}
+  enemyParent: {fileID: 0}
   spawnBuffer: 0
-  enemyLevelWaves: 0300000006000000
+  enemyLevelWaves: 0200000003000000
   currentEnemyLevel: 1
   startEnemyAmount: 10
-  waveMultiplier: 0.1
+  waveMultiplier: 1.1
   waveCooldownInSeconds: 5
 --- !u!1 &1047321308
 GameObject:
@@ -4695,7 +4695,7 @@ GameObject:
   - component: {fileID: 1401664046}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4731,7 +4731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 8975744552180288778, guid: 30077dc9b74e4d148a134ed01e210a51, type: 3}
-  bulletParent: {fileID: 0}
+  bulletParent: {fileID: 507785712}
   shootingPoint: {fileID: 661368940}
   bulletSpeed: 400
   shootCooldown: 0.5
@@ -6303,6 +6303,7 @@ GameObject:
   - component: {fileID: 1831015296}
   - component: {fileID: 1831015295}
   - component: {fileID: 1831015294}
+  - component: {fileID: 1831015297}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -6376,6 +6377,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1831015297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831015293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9381792d6005964985e0e54f4cc6e1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1401664045}
 --- !u!1 &1842966809
 GameObject:
   m_ObjectHideFlags: 0
@@ -6932,7 +6946,7 @@ GameObject:
   - component: {fileID: 2062505590}
   m_Layer: 0
   m_Name: PlayerCharacter
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

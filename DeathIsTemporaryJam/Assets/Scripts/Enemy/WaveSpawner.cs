@@ -39,7 +39,7 @@ public class WaveSpawner : MonoBehaviour
         cam = Camera.main;
         currentAmountOfEnemies = startEnemyAmount;
 
-        StartCoroutine(SpawnNextWave());
+
     }
 
 
@@ -53,6 +53,21 @@ public class WaveSpawner : MonoBehaviour
 
     }
 
+
+    public void StartWaves()
+    {
+        StartCoroutine(SpawnNextWave());
+    }
+
+    public void ResetWaves()
+    {
+        currentWave = 0;
+        currentEnemyLevel = 1;
+        foreach (GameObject enemy in waveEnemies)
+        {
+            Destroy(enemy);
+        }
+    }
 
 
     Vector3 GetSpawnPosition()
