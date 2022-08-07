@@ -25,7 +25,7 @@ public class HealthController : MonoBehaviour
     public void Damage(int amount)
     {
         Health -= amount;
-        if (Health < 0) Die();
+        if (Health <= 0) Die();
     }
 
     public void ResetHealth()
