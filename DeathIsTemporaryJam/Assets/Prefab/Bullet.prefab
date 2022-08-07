@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.9150943, g: 0.39319766, b: 0.056114297, a: 1}
   m_FlipX: 0
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Piercing: 0
   Damage: 0
-  Explosion: {fileID: 0}
+  ExplosionDamage: 0
   canDamagePlayer: 0
   canDamageEnemy: 1
   hasExplosion: 1
