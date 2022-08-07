@@ -42,7 +42,8 @@ public class Shooting : MonoBehaviour
         if (timeStamp <= Time.time)
         {
             Fire();
-            timeStamp = Time.time + shootCooldown - Mathf.Min(Mathf.Sqrt(StatManager.Instance.GunRpm),(float) (shootCooldown * 0.8));
+            var x = StatManager.Instance.GunRpm;
+            timeStamp = Time.time + shootCooldown - 0.5f*(0.3f*x)/(0.3f*x+2);
         }
     }
 
