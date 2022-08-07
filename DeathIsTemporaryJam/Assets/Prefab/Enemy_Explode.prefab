@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 14434873}
   - component: {fileID: 14434872}
   - component: {fileID: 2770157756882906818}
+  - component: {fileID: 1639673294498046006}
   m_Layer: 0
   m_Name: BombEnemy_0
   m_TagString: Untagged
@@ -101,6 +102,26 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.045808952}
   serializedVersion: 2
   m_Radius: 0.09919098
+--- !u!95 &1639673294498046006
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14434870}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4f0db2ef7c7733642b0818f577d1b5a6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5652582379609188137
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,7 +215,7 @@ MonoBehaviour:
   repathRateCompatibility: NaN
   canSearchCompability: 0
   orientation: 1
-  enableRotation: 1
+  enableRotation: 0
   autoRepath:
     mode: 2
     interval: 0.5
@@ -254,9 +275,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 2
-  attackFuse: 0.5
+  attackFuse: 1.5
   healthController: {fileID: 0}
   enemyHealthManager: {fileID: 2806091524721326970}
+  animator: {fileID: 1639673294498046006}
 --- !u!114 &-7639727753452530759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,4 +331,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4

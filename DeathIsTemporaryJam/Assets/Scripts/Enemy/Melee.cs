@@ -10,6 +10,8 @@ public class Melee : MonoBehaviour
     [SerializeField] float attackCooldown;
     [SerializeField] int attackDamage;
     [SerializeField] HealthController healthController;
+    [SerializeField] Animator animator;
+
 
     AIDestinationSetter destinationSetter;
     Transform player;
@@ -61,9 +63,11 @@ public class Melee : MonoBehaviour
     IEnumerator AttackPlayer()
     {
         Debug.LogWarning("Started Attacking Player");
+        animator.SetTrigger("IsAttacking");
         healthController.Damage(attackDamage);
         Debug.LogWarning("Damaged Player");
         yield return new WaitForSeconds(attackCooldown);
+        animator.ResetTrigger("IsAttacking");
         if (DistanceToPlayer() < attackRange)
         {
             Debug.LogWarning("Restart Cycle");

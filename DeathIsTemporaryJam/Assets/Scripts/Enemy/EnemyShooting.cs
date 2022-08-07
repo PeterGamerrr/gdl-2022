@@ -6,7 +6,6 @@ public class EnemyShooting : MonoBehaviour
 {
 
     [SerializeField] GameObject bullet;
-    [SerializeField] Transform bulletParent;
     [SerializeField] Transform shootingPoint;
 
     [SerializeField] float bulletSpeed;
@@ -45,7 +44,7 @@ public class EnemyShooting : MonoBehaviour
         Debug.LogWarning("Fired Bullet");
         Bullet bulletScript;
         direction = target.position - transform.position;
-        bulletObject = Instantiate(bullet, shootingPoint.position, transform.rotation, bulletParent);
+        bulletObject = Instantiate(bullet, shootingPoint.position, transform.rotation);
         bulletScript = bulletObject.GetComponent<Bullet>();
         bulletScript.Damage = damage;
         bulletRB = bulletObject.GetComponent<Rigidbody2D>();

@@ -11,6 +11,7 @@ public class Bomber : MonoBehaviour
     [SerializeField] float attackFuse;
     [SerializeField] HealthController healthController;
     [SerializeField] EnemyHealthManager enemyHealthManager;
+    [SerializeField] Animator animator;
 
     AIDestinationSetter destinationSetter;
     Transform player;
@@ -61,10 +62,12 @@ public class Bomber : MonoBehaviour
     IEnumerator AttackPlayer()
     {
         Debug.LogWarning("Started Player Attack");
+        animator.SetTrigger("IsPrimed");
         yield return new WaitForSeconds(attackFuse);
         if (DistanceToPlayer() <= attackRange)
         {
             explosion.Explode();
+            animator.ResetTrigger("IsPrimed");
             enemyHealthManager.Die();
         }
     }
