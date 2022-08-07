@@ -4590,8 +4590,8 @@ MonoBehaviour:
   bulletSpeed: 400
   shootCooldown: 0.5
   amountOfBullets: 10
-  damage: 0
-  piercing: 0
+  damage: 20
+  piercing: 1
 --- !u!50 &1401664043
 Rigidbody2D:
   serializedVersion: 4
