@@ -16,7 +16,7 @@ public class EnemyHealthManager : MonoBehaviour
         if (health <= 0) Die();
     }
 
-    void Die()
+    public void Die()
     {
         EnemyDeathEvent.Invoke(gameObject);
         Destroy(this.gameObject);
