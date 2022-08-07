@@ -2,6 +2,7 @@ using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] int amountOfKillPoints;
     [SerializeField] int amountOfWavePoints;
 
+    [SerializeField] TextMeshProUGUI waveVisual;
+    [SerializeField] TextMeshProUGUI enemyCountVisual;
 
 
     Camera cam;
@@ -71,6 +74,10 @@ public class WaveSpawner : MonoBehaviour
         {
             Destroy(enemy);
         }
+        waveEnemies.Clear();
+        enemyCountVisual.text = "0";
+        waveVisual.text = "0";
+
     }
 
 
@@ -130,7 +137,8 @@ public class WaveSpawner : MonoBehaviour
     void SpawnWaves(int wave)
     {
         Debug.Log(currentWaveMultiplier);
-        currentAmountOfEnemies = (int) (currentAmountOfEnemies  * waveMultiplier);
+
+        currentAmountOfEnemies = (int) (startEnemyAmount * Mathf.Pow(waveMultiplier,wave) );
 
         SpawnEnemies(currentAmountOfEnemies, currentEnemyLevel);
     }
@@ -144,6 +152,8 @@ public class WaveSpawner : MonoBehaviour
         yield return new WaitForSeconds(waveCooldownInSeconds);
         SpawnWaves(currentWave);
         Debug.Log("Spawned wave " + currentWave);
+        waveVisual.text = "" + currentWave;
+        enemyCountVisual.text = "" + waveEnemies.Count;
     }
 
 
@@ -160,6 +170,8 @@ public class WaveSpawner : MonoBehaviour
             waveEnemies.Remove(enemy);
             Debug.Log("Killed Enemy");
         }
+
+        enemyCountVisual.text = "" + waveEnemies.Count;
 
         if (waveEnemies.Count <= 0)
         {

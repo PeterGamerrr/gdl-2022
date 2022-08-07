@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject StartMenu;
     [SerializeField] GameObject GameOverMenu;
     [SerializeField] GameObject UpgradeMenu;
+    [SerializeField] GameObject GameNumbers;
 
 
     void Start()
@@ -41,6 +42,7 @@ public class GameManager : MonoBehaviour
     {
         StartMenu.SetActive(false);
         HealthBar.SetActive(true);
+        GameNumbers.SetActive(true);
         WaveSpawner.StartWaves();
     }
 
@@ -48,6 +50,7 @@ public class GameManager : MonoBehaviour
     {
         UpgradeMenu.SetActive(true);
         HealthBar.SetActive(false);
+        GameNumbers.SetActive(false);
         WaveSpawner.ResetWaves();
         StatManager.Instance.GiveUpgradePoint(0);
         Time.timeScale = 0;
@@ -57,6 +60,7 @@ public class GameManager : MonoBehaviour
     {
         UpgradeMenu.SetActive(false);
         HealthBar.SetActive(true);
+        GameNumbers.SetActive(true);
         HealthController.ResetHealth();
         WaveSpawner.StartWaves();
         Time.timeScale = 1;
@@ -66,6 +70,7 @@ public class GameManager : MonoBehaviour
     public void OnGameOver()
     {
         UpgradeMenu.SetActive(false);
+        GameNumbers.SetActive(false);
         GameOverMenu.SetActive(true);
         HealthBar.SetActive(false);
 

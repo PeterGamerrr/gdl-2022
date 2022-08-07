@@ -9,6 +9,7 @@ public class Shooting : MonoBehaviour
     [SerializeField] GameObject bullet;
     [SerializeField] Transform bulletParent;
     [SerializeField] Transform shootingPoint;
+    [SerializeField] PlayerController playerController;
 
     [SerializeField] float bulletSpeed;
     [SerializeField] float shootCooldown;
@@ -67,17 +68,14 @@ public class Shooting : MonoBehaviour
 
     void Fire()
     {
-        Debug.LogError("1");
         Bullet bulletScript;
         direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         bulletObject = Instantiate(bullet, shootingPoint.position, transform.rotation, bulletParent);
         bulletScript = bulletObject.GetComponent<Bullet>();
         bulletScript.Damage = damage + (int) (damage * 0.2 * damageMul);
         bulletScript.Piercing = piercing + piercingMul;
-        Debug.LogError("2");
         bulletScript.ExplosionDamage = explosionMul * 5;
-        Debug.LogError("3");
         bulletRB = bulletObject.GetComponent<Rigidbody2D>();
-        bulletRB.AddForce(direction.normalized * bulletSpeed);
+        bulletRB.AddForce(direction.normalized * bulletSpeed + playerController.movementVel);
     }
 }

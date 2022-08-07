@@ -40,6 +40,9 @@ namespace Assets.Scripts
         public TextMeshProUGUI ExplosionVisual;
         public TextMeshProUGUI UpgradesVisual;
 
+        [SerializeField] TextMeshProUGUI ingameUpgradesVisual;
+
+
         private void Awake()
         {
             _instance = this;
@@ -125,6 +128,7 @@ namespace Assets.Scripts
         public void GiveUpgradePoint(int amount)
         {
             UpgradePoints += amount;
+
         }
 
         private void Update()
@@ -137,6 +141,7 @@ namespace Assets.Scripts
             PiercingVisual.text = "" + Piercing;
             SpeedVisual.text = "" + Speed;
             UpgradesVisual.text = "" + UpgradePoints;
+            ingameUpgradesVisual.text = "" + UpgradePoints;
         }
     }
 }
