@@ -70,7 +70,7 @@ public class Shooting : MonoBehaviour
         bulletObject = Instantiate(bullet, shootingPoint.position, transform.rotation, bulletParent);
         bulletScript = bulletObject.GetComponent<Bullet>();
         bulletScript.Damage = damage + (int) (damage * 0.2 * damageMul);
-        bulletScript.Piercing = piercing + piercing * piercingMul;
+        bulletScript.Piercing = piercing + piercingMul;
         bulletRB = bulletObject.GetComponent<Rigidbody2D>();
         bulletRB.AddForce(direction.normalized * bulletSpeed);
     }

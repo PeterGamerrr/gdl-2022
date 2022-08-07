@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] HealthController HealthController;
     [SerializeField] LivesController LivesController;
+    [SerializeField] WaveSpawner WaveSpawner;
 
     [SerializeField] GameObject HealthBar;
     [SerializeField] GameObject StartMenu;
@@ -33,19 +34,23 @@ public class GameManager : MonoBehaviour
     {
         HealthController.DeathEvent.AddListener(OnDeath);
         LivesController.GameOverEvent.AddListener(OnGameOver);
+
     }
 
     public void StartGame()
     {
         StartMenu.SetActive(false);
         HealthBar.SetActive(true);
+        WaveSpawner.StartWaves();
     }
 
     public void OnDeath()
     {
         UpgradeMenu.SetActive(true);
         HealthBar.SetActive(false);
+        WaveSpawner.ResetWaves();
         StatManager.Instance.GiveUpgradePoint(100);
+        Time.timeScale = 0;
     }
 
     public void ContinueAfterDeath()
@@ -53,6 +58,8 @@ public class GameManager : MonoBehaviour
         UpgradeMenu.SetActive(false);
         HealthBar.SetActive(true);
         HealthController.ResetHealth();
+        Time.timeScale = 1;
+
     }
 
     public void OnGameOver()
