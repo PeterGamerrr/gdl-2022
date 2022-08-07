@@ -1,4 +1,5 @@
 using Assets.Scripts;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,21 @@ public class Shooting : MonoBehaviour
 
     private float timeStamp = 0;
 
+    private int cooldownMul = 0;
+    private int piercingMul = 0;
+    private int damageMul = 0;
+
+    private void Start()
+    {
+        StatManager.Instance.UpGradeEvent.AddListener(OnUpgradeEvent);
+    }
+
+    private void OnUpgradeEvent()
+    {
+        cooldownMul = StatManager.Instance.GunRpm;
+        piercingMul = StatManager.Instance.Piercing;
+        damageMul = StatManager.Instance.Damage;
+    }
 
     void Update()
     {
@@ -43,7 +59,7 @@ public class Shooting : MonoBehaviour
         {
             Fire();
             var x = StatManager.Instance.GunRpm;
-            timeStamp = Time.time + shootCooldown - 0.5f*(0.3f*x)/(0.3f*x+2);
+            timeStamp = Time.time + shootCooldown - 0.5f*(0.3f* cooldownMul) /(0.3f* cooldownMul + 2);
         }
     }
 
@@ -53,8 +69,8 @@ public class Shooting : MonoBehaviour
         direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         bulletObject = Instantiate(bullet, shootingPoint.position, transform.rotation, bulletParent);
         bulletScript = bulletObject.GetComponent<Bullet>();
-        bulletScript.Damage = damage;
-        bulletScript.Piercing = piercing;
+        bulletScript.Damage = damage + (int) (damage * 0.2 * damageMul);
+        bulletScript.Piercing = piercing + piercing * piercingMul;
         bulletRB = bulletObject.GetComponent<Rigidbody2D>();
         bulletRB.AddForce(direction.normalized * bulletSpeed);
     }
