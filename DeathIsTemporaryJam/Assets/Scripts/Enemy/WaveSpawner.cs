@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,9 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] int startEnemyAmount;
     [SerializeField] float waveMultiplier;
     [SerializeField] int waveCooldownInSeconds;
+    [SerializeField] int pointChanceOnKill;
+    [SerializeField] int amountOfKillPoints;
+    [SerializeField] int amountOfWavePoints;
 
 
 
@@ -102,7 +106,7 @@ public class WaveSpawner : MonoBehaviour
     {
         currentWave++;
 
-        //give score?
+        StatManager.Instance.GiveUpgradePoint(amountOfWavePoints);
     }
 
 
@@ -155,7 +159,16 @@ public class WaveSpawner : MonoBehaviour
         {
             StartCoroutine(SpawnNextWave());
         }
+
+        int pointChance = Random.Range(1, 101);
+        if (pointChance <= pointChanceOnKill)
+        {
+            StatManager.Instance.GiveUpgradePoint(amountOfKillPoints);
+        }
     }
+
+
+
 
 
     void CheckEnemyLVL()

@@ -3442,10 +3442,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyTypes:
-  - {fileID: 7362102221699646899, guid: 6687dba93d520a3469ab5faaca2036e5, type: 3}
   - {fileID: 7362102221699646899, guid: 01c2b596a318a32499e9b40139dda85e, type: 3}
   - {fileID: 6408164155551773269, guid: 80f0d4f5fb99a3c40853e6fa324ec121, type: 3}
   - {fileID: 5652582379609188137, guid: 97695ac78dce2f9429ee3d8047b884c9, type: 3}
+  - {fileID: 7362102221699646899, guid: 6687dba93d520a3469ab5faaca2036e5, type: 3}
   player: {fileID: 1401664040}
   enemyParent: {fileID: 1571813583}
   spawnBuffer: 0
