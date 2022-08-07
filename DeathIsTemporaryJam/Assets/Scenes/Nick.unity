@@ -3424,6 +3424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthController: {fileID: 1401664041}
   LivesController: {fileID: 1401664046}
+  WaveSpawner: {fileID: 1023953229}
   HealthBar: {fileID: 18599891}
   StartMenu: {fileID: 180378616}
   GameOverMenu: {fileID: 994351452}
@@ -3441,14 +3442,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyTypes:
+  - {fileID: 7362102221699646899, guid: 6687dba93d520a3469ab5faaca2036e5, type: 3}
   - {fileID: 7362102221699646899, guid: 01c2b596a318a32499e9b40139dda85e, type: 3}
   - {fileID: 6408164155551773269, guid: 80f0d4f5fb99a3c40853e6fa324ec121, type: 3}
   - {fileID: 5652582379609188137, guid: 97695ac78dce2f9429ee3d8047b884c9, type: 3}
-  - {fileID: 7362102221699646899, guid: 6687dba93d520a3469ab5faaca2036e5, type: 3}
-  player: {fileID: 0}
-  enemyParent: {fileID: 0}
+  player: {fileID: 1401664040}
+  enemyParent: {fileID: 1571813583}
   spawnBuffer: 0
-  enemyLevelWaves: 0200000003000000
+  enemyLevelWaves: 020000000300000004000000
   currentEnemyLevel: 1
   startEnemyAmount: 10
   waveMultiplier: 1.1

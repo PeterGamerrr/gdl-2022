@@ -305,7 +305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 2
-  attackCooldown: 0.5
+  attackCooldown: 1.2
   attackDamage: 25
   healthController: {fileID: 0}
 --- !u!50 &-3196659152717244232
