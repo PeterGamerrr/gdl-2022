@@ -68,7 +68,7 @@ public class Shooting : MonoBehaviour
     }
 
     void Fire()
-    {
+    {6
         Bullet bulletScript;
         direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - shootingPoint.transform.position;
         shootRotation = RotateTowardsMouse();

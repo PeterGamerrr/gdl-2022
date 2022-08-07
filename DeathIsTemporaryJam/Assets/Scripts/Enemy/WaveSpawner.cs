@@ -101,9 +101,18 @@ public class WaveSpawner : MonoBehaviour
             spawnX = Random.Range(-1f, 3f);
         }
 
+
         spawnPosition = cam.ViewportToWorldPoint(new Vector3(spawnX, spawnY, 1));
 
-        //TODO: check if position is safe
+        //check if is out of range
+        if (spawnPosition.x < -72 || spawnPosition.y < -72 || spawnPosition.x > 72 || spawnPosition.y > 72) return GetSpawnPosition();
+
+        //check if is colliding
+
+        var colliders = Physics2D.OverlapCircleAll(spawnPosition, 2);
+
+        if (colliders.Length > 0) return GetSpawnPosition();
+
 
         return spawnPosition;
     }
