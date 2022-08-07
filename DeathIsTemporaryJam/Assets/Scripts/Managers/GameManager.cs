@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
         UpgradeMenu.SetActive(true);
         HealthBar.SetActive(false);
         WaveSpawner.ResetWaves();
-        StatManager.Instance.GiveUpgradePoint(100);
+        StatManager.Instance.GiveUpgradePoint(0);
         Time.timeScale = 0;
     }
 

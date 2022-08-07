@@ -3454,6 +3454,9 @@ MonoBehaviour:
   startEnemyAmount: 10
   waveMultiplier: 1.1
   waveCooldownInSeconds: 5
+  pointChanceOnKill: 2
+  amountOfKillPoints: 1
+  amountOfWavePoints: 1
 --- !u!1 &1047321308
 GameObject:
   m_ObjectHideFlags: 0
