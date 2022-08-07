@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -1374,7 +1374,6 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      TX Struct_51: -915379384
       TX Struct_28: -506768977
       TX Struct_45: -656224463
       TX Struct_7: 812537084
@@ -1415,8 +1414,8 @@ TextureImporter:
       TX Struct_55: 1695323397
       TX Struct_4: -49052287
       TX Struct_9: -65380181
-      TX Struct_34: -1518060097
       TX Struct_43: 314252824
+      TX Struct_34: -1518060097
       TX Struct_0: 1879925798
       TX Struct_35: 1379366890
       TX Struct_32: 504273820
@@ -1430,6 +1429,7 @@ TextureImporter:
       TX Struct_3: -221898860
       TX Struct_38: -747088658
       TX Struct_19: 1027756166
+      TX Struct_51: -915379384
       TX Struct_2: -302482123
       TX Struct_41: 2070235936
       TX Struct_47: -1306568905
