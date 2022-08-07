@@ -17,6 +17,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] bool canDamageEnemy;
     [SerializeField] bool hasExplosion;
 
+    [SerializeField] AudioSource hitSound;
 
     private void Start()
     {
@@ -25,6 +26,8 @@ public class Bullet : MonoBehaviour
             Explosion = GetComponent<Explosion>();
             Explosion.damage = ExplosionDamage;
         }
+
+
 
     }
 
@@ -65,6 +68,10 @@ public class Bullet : MonoBehaviour
             healthController.Damage(Damage);
             Debug.Log("Damaged Player" + Damage);
         }
+        hitSound.Play();
+
         CheckPiercing();
+
+
     }
 }

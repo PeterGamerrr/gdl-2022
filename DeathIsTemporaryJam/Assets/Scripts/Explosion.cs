@@ -11,6 +11,7 @@ public class Explosion : MonoBehaviour
     [SerializeField] bool canDamagePlayer;
     [SerializeField] bool canDamageEnemy;
 
+    [SerializeField] AudioSource explosionSound;
 
     private Collider2D[] hitColliders;
     EnemyHealthManager healthManager;
@@ -23,6 +24,7 @@ public class Explosion : MonoBehaviour
     {
         if (damage <= 0) return;
         Debug.LogWarning("Boom");
+        explosionSound.Play();
         hitColliders = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), range);
         Debug.LogWarning("Boom, but after the colliders");
         Debug.LogWarning(hitColliders.Length);

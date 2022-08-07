@@ -11,6 +11,7 @@ public class Ranged : MonoBehaviour
     [SerializeField] int attackCooldown;
     [SerializeField] int attackDamage;
     [SerializeField] HealthController healthController;
+    [SerializeField] Animator animator;
 
     AIDestinationSetter destinationSetter;
     Transform player;
@@ -63,7 +64,10 @@ public class Ranged : MonoBehaviour
     IEnumerator AttackPlayer()
     {
         Debug.LogWarning("Started Player Attack");
+        animator.SetBool("IsAttacking", true);
+        yield return new WaitForSeconds(0.2f);
         shooting.Shoot();
+        animator.SetBool("IsAttacking", false);
         yield return new WaitForSeconds(attackCooldown);
         if (DistanceToPlayer() <= attackRange)
         {
