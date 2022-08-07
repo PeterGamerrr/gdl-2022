@@ -10,6 +10,7 @@ public class Bomber : MonoBehaviour
     [SerializeField] float attackRange;
     [SerializeField] float attackFuse;
     [SerializeField] HealthController healthController;
+    [SerializeField] EnemyHealthManager enemyHealthManager;
 
     AIDestinationSetter destinationSetter;
     Transform player;
@@ -64,7 +65,7 @@ public class Bomber : MonoBehaviour
         if (DistanceToPlayer() <= attackRange)
         {
             explosion.Explode();
-            Destroy(gameObject);
+            enemyHealthManager.Die();
         }
     }
 }
