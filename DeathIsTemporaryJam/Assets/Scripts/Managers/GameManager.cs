@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour
         UpgradeMenu.SetActive(false);
         HealthBar.SetActive(true);
         HealthController.ResetHealth();
+        WaveSpawner.StartWaves();
         Time.timeScale = 1;
 
     }
