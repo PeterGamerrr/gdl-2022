@@ -38,7 +38,7 @@ public class WaveSpawner : MonoBehaviour
     private int currentWave = 0;
     private int currentAmountOfEnemies;
     private float currentWaveMultiplier;
-    private List<GameObject> waveEnemies = new List<GameObject>();
+    public List<GameObject> waveEnemies = new List<GameObject>();
 
 
     void Start()
