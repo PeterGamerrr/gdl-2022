@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private float horizontalInput;
     private float verticalInput;
     private Vector2 moveDir;
-    private Vector2 movementVel;
+    public Vector2 movementVel;
 
     //rotation
     private Vector2 direction;
@@ -61,7 +61,8 @@ public class PlayerController : MonoBehaviour
 
     void MovePlayer()
     {
-        rb.MovePosition(rb.position + moveDir * moveSpeed * Time.deltaTime * (float) Math.Pow(moveSpeedMul,StatManager.Instance.Speed));
+        movementVel = moveDir * moveSpeed * Time.deltaTime * (float)Math.Pow(moveSpeedMul, StatManager.Instance.Speed);
+        rb.MovePosition(rb.position + movementVel);
 
         /*        float targetSpeed = horizontalInput * moveSpeed;
                 float speedDif = targetSpeed - rb.velocity.magnitude;
