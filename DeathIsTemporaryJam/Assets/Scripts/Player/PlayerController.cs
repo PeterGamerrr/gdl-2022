@@ -12,7 +12,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float decceleration;
     [SerializeField] private float velPower;
 
+    [SerializeField] Animator animator;
     private Rigidbody2D rb;
+
 
     //movement
     private float horizontalInput;
@@ -22,11 +24,15 @@ public class PlayerController : MonoBehaviour
 
     //rotation
     private Vector2 direction;
+    private Vector2 mousePos;
+    private Vector3 newScale;
+
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         StatManager.Instance.UpGradeEvent.AddListener(OnUpgrade);
+
     }
 
     private void OnUpgrade()
@@ -36,7 +42,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         HandleInput();
-        RotateTowardsMouse();
+        //RotateTowardsMouse();
+        FlipTowardsMouse();
+        UpdateAnimations();
     }
 
 
@@ -47,6 +55,24 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    void UpdateAnimations()
+    {
+        if (horizontalInput >= 0.05
+            || verticalInput >= 0.05
+            || horizontalInput <= -0.05
+            || verticalInput <= -0.05)
+        {
+            animator.SetBool("IsMoving", true);
+        }
+        if (horizontalInput <= 0.05
+            && verticalInput <= 0.05
+            && horizontalInput >= -0.05
+            && verticalInput >= -0.05)
+        {
+            animator.SetBool("IsMoving", false);
+        }
+    }
+
 
 
     void HandleInput()
@@ -54,7 +80,7 @@ public class PlayerController : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        moveDir = new Vector2 (horizontalInput, verticalInput);
+        moveDir = new Vector2 (horizontalInput, verticalInput).normalized;
     }
 
 
@@ -84,6 +110,18 @@ public class PlayerController : MonoBehaviour
         direction.Normalize();
         float rotation_z = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, rotation_z);
+    }
+
+    void FlipTowardsMouse()
+    {
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (mousePos.x < transform.position.x && transform.localScale.x > 0 || mousePos.x > transform.position.x && transform.localScale.x < 0)
+        {
+            newScale = gameObject.transform.localScale;
+            newScale.x *= -1;
+            gameObject.transform.localScale = newScale;
+        }
+
     }
 
 }
