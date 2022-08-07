@@ -139,6 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Piercing: 0
   Damage: 0
+  Explosion: {fileID: 0}
   canDamagePlayer: 0
   canDamageEnemy: 1
   hasExplosion: 1
@@ -154,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e28844cd82bc1b4b8d8850d2fe56eff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 6
-  damage: 75
+  range: 3
+  damage: 10
   canDamagePlayer: 0
   canDamageEnemy: 1

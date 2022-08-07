@@ -26,6 +26,7 @@ public class Shooting : MonoBehaviour
     private int cooldownMul = 0;
     private int piercingMul = 0;
     private int damageMul = 0;
+    private int explosionMul = 0;
 
     private void Start()
     {
@@ -37,6 +38,7 @@ public class Shooting : MonoBehaviour
         cooldownMul = StatManager.Instance.GunRpm;
         piercingMul = StatManager.Instance.Piercing;
         damageMul = StatManager.Instance.Damage;
+        explosionMul = StatManager.Instance.Explosion;
     }
 
     void Update()
@@ -65,12 +67,16 @@ public class Shooting : MonoBehaviour
 
     void Fire()
     {
+        Debug.LogError("1");
         Bullet bulletScript;
         direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         bulletObject = Instantiate(bullet, shootingPoint.position, transform.rotation, bulletParent);
         bulletScript = bulletObject.GetComponent<Bullet>();
         bulletScript.Damage = damage + (int) (damage * 0.2 * damageMul);
         bulletScript.Piercing = piercing + piercingMul;
+        Debug.LogError("2");
+        bulletScript.ExplosionDamage = explosionMul * 5;
+        Debug.LogError("3");
         bulletRB = bulletObject.GetComponent<Rigidbody2D>();
         bulletRB.AddForce(direction.normalized * bulletSpeed);
     }

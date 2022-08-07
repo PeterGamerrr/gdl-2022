@@ -6,7 +6,7 @@ public class Explosion : MonoBehaviour
 {
 
     [SerializeField] float range;
-    [SerializeField] int damage;
+    [SerializeField] public int damage;
 
     [SerializeField] bool canDamagePlayer;
     [SerializeField] bool canDamageEnemy;
@@ -21,6 +21,7 @@ public class Explosion : MonoBehaviour
 
     public void Explode()
     {
+        if (damage <= 0) return;
         Debug.LogWarning("Boom");
         hitColliders = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), range);
         Debug.LogWarning("Boom, but after the colliders");

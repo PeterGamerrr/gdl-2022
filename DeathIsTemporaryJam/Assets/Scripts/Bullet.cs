@@ -7,20 +7,23 @@ public class Bullet : MonoBehaviour
 
     public int Piercing;
     public int Damage;
+    public int ExplosionDamage;
 
     EnemyHealthManager enemyHealthManager;
     HealthController healthController;
-    Explosion explosion;
+    Explosion Explosion;
 
     [SerializeField] bool canDamagePlayer;
     [SerializeField] bool canDamageEnemy;
     [SerializeField] bool hasExplosion;
 
+
     private void Start()
     {
         if (hasExplosion)
         {
-            explosion = GetComponent<Explosion>();
+            Explosion = GetComponent<Explosion>();
+            Explosion.damage = ExplosionDamage;
         }
 
     }
@@ -34,7 +37,7 @@ public class Bullet : MonoBehaviour
         {
             if (hasExplosion)
             {
-                explosion.Explode();
+                Explosion.Explode();
             }
             Destroy(gameObject);
         }
