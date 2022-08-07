@@ -661,7 +661,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &180378617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3139,7 +3139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &994351453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4587,7 +4587,7 @@ MonoBehaviour:
   bullet: {fileID: 8975744552180288778, guid: 30077dc9b74e4d148a134ed01e210a51, type: 3}
   bulletParent: {fileID: 0}
   shootingPoint: {fileID: 661368940}
-  bulletSpeed: 100
+  bulletSpeed: 400
   shootCooldown: 0.5
   amountOfBullets: 10
   damage: 0
