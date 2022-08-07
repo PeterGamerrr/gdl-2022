@@ -104,9 +104,9 @@ public class WaveSpawner : MonoBehaviour
 
     void IncreaseWave()
     {
-        currentWave++;
-
         StatManager.Instance.GiveUpgradePoint(amountOfWavePoints);
+
+        currentWave++;
     }
 
 
@@ -149,6 +149,12 @@ public class WaveSpawner : MonoBehaviour
 
     void EnemyDeathListener(GameObject enemy)
     {
+        int pointChance = Random.Range(1, 101);
+        if (pointChance <= pointChanceOnKill)
+        {
+            StatManager.Instance.GiveUpgradePoint(amountOfKillPoints);
+        }
+
         if (waveEnemies.Contains(enemy))
         {
             waveEnemies.Remove(enemy);
@@ -160,11 +166,7 @@ public class WaveSpawner : MonoBehaviour
             StartCoroutine(SpawnNextWave());
         }
 
-        int pointChance = Random.Range(1, 101);
-        if (pointChance <= pointChanceOnKill)
-        {
-            StatManager.Instance.GiveUpgradePoint(amountOfKillPoints);
-        }
+
     }
 
 
