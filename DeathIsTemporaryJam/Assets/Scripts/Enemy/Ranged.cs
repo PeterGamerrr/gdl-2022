@@ -18,6 +18,8 @@ public class Ranged : MonoBehaviour
     EnemyShooting shooting;
 
     private bool isAttacking = false;
+    private Vector3 playerPos;
+    private Vector3 newScale;
 
     private void Start()
     {
@@ -35,6 +37,7 @@ public class Ranged : MonoBehaviour
     void Update()
     {
         CheckAttackDistance();
+        FlipTowardsPlayer();
     }
 
 
@@ -73,5 +76,18 @@ public class Ranged : MonoBehaviour
         {
             StartCoroutine(AttackPlayer());
         }
+    }
+
+
+    void FlipTowardsPlayer()
+    {
+        playerPos = player.transform.position;
+        if (playerPos.x < transform.position.x && transform.localScale.x > 0 || playerPos.x > transform.position.x && transform.localScale.x < 0)
+        {
+            newScale = gameObject.transform.localScale;
+            newScale.x *= -1;
+            gameObject.transform.localScale = newScale;
+        }
+
     }
 }

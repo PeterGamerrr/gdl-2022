@@ -35,7 +35,6 @@ namespace Assets.Scripts
         public TextMeshProUGUI HealthVisual;
         public TextMeshProUGUI GunVisual;
         public TextMeshProUGUI DamageVisual;
-        public TextMeshProUGUI BulletCountVisual;
         public TextMeshProUGUI PiercingVisual;
         public TextMeshProUGUI ExplosionVisual;
         public TextMeshProUGUI UpgradesVisual;
@@ -133,7 +132,6 @@ namespace Assets.Scripts
 
         private void Update()
         {
-            BulletCountVisual.text = "" + BulletCount;
             DamageVisual.text = "" + Damage;
             ExplosionVisual.text = "" + Explosion;
             GunVisual.text = "" + GunRpm;
