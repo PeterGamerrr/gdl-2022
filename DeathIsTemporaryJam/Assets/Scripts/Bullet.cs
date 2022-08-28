@@ -59,7 +59,8 @@ public class Bullet : MonoBehaviour
             enemyHealthManager.Damage(Damage);
 
             Debug.Log("Damaged Enemy");
-
+            hitSound.Play();
+            CheckPiercing();
         } 
         if (collision.gameObject.CompareTag("Player") && canDamagePlayer)
         {
@@ -67,10 +68,12 @@ public class Bullet : MonoBehaviour
             healthController = collision.gameObject.GetComponentInParent<HealthController>();
             healthController.Damage(Damage);
             Debug.Log("Damaged Player" + Damage);
+            hitSound.Play();
+            CheckPiercing();
         }
-        hitSound.Play();
 
-        CheckPiercing();
+
+
 
 
     }

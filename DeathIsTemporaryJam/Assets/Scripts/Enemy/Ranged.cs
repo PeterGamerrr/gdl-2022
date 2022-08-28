@@ -19,7 +19,8 @@ public class Ranged : MonoBehaviour
 
     private bool isAttacking = false;
     private Vector3 playerPos;
-    private Vector3 newScale;
+    private Vector3 scaleRight;
+    private Vector3 scaleLeft;
 
     private void Start()
     {
@@ -31,6 +32,10 @@ public class Ranged : MonoBehaviour
         shooting = GetComponent<EnemyShooting>();
 
         shooting.target = player;
+
+        scaleLeft = transform.localScale;
+        scaleRight = transform.localScale;
+        scaleRight.x *= -1;
     }
 
 
@@ -82,12 +87,23 @@ public class Ranged : MonoBehaviour
     void FlipTowardsPlayer()
     {
         playerPos = player.transform.position;
-        if (playerPos.x < transform.position.x && transform.localScale.x > 0 || playerPos.x > transform.position.x && transform.localScale.x < 0)
+        if (IsPlayerRight())
         {
-            newScale = gameObject.transform.localScale;
-            newScale.x *= -1;
-            gameObject.transform.localScale = newScale;
+            //newScale = gameObject.transform.localScale;
+            gameObject.transform.localScale = scaleRight;
         }
+        else if (!IsPlayerRight())
+        {
+            gameObject.transform.localScale = scaleLeft;
+        }
+    }
 
+    bool IsPlayerRight()
+    {
+        if (playerPos.x > transform.position.x)
+        {
+            return true;
+        }
+        return false;
     }
 }

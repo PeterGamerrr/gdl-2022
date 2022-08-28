@@ -4975,7 +4975,7 @@ MonoBehaviour:
   damage: 10
   canDamagePlayer: 0
   canDamageEnemy: 1
-  explosionSound: {fileID: -522644022302666772}
+  explosionSound: {fileID: 5521744699619342657}
 --- !u!82 &5521744699619342657
 AudioSource:
   m_ObjectHideFlags: 0

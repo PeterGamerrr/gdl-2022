@@ -63,13 +63,15 @@ public class Melee : MonoBehaviour
     IEnumerator AttackPlayer()
     {
         Debug.LogWarning("Started Attacking Player");
-        animator.SetBool("IsAttacking", true);
+        //animator.SetBool("IsAttacking", true);
+        animator.SetTrigger("AttackTrigger");
         healthController.Damage(attackDamage);
         Debug.LogWarning("Damaged Player");
         yield return new WaitForSeconds(0.2f);
-        animator.SetBool("IsAttacking", false);
+        //animator.SetBool("IsAttacking", false);
+        animator.ResetTrigger("AttackTrigger");
         yield return new WaitForSeconds(attackCooldown);
-        animator.ResetTrigger("IsAttacking");
+
 
         if (DistanceToPlayer() < attackRange)
         {
