@@ -18,6 +18,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] bool hasExplosion;
 
     [SerializeField] AudioSource hitSound;
+    [SerializeField] List<string> nonHittableTags;
 
     private void Start()
     {
@@ -26,8 +27,6 @@ public class Bullet : MonoBehaviour
             Explosion = GetComponent<Explosion>();
             Explosion.damage = ExplosionDamage;
         }
-
-
 
     }
 
@@ -59,8 +58,6 @@ public class Bullet : MonoBehaviour
             enemyHealthManager.Damage(Damage);
 
             Debug.Log("Damaged Enemy");
-            hitSound.Play();
-            CheckPiercing();
         } 
         if (collision.gameObject.CompareTag("Player") && canDamagePlayer)
         {
@@ -69,12 +66,11 @@ public class Bullet : MonoBehaviour
             healthController.Damage(Damage);
             Debug.Log("Damaged Player" + Damage);
             hitSound.Play();
+        }
+        if (!nonHittableTags.Contains(collision.gameObject.tag))
+        {
+            hitSound.Play();
             CheckPiercing();
         }
-
-
-
-
-
     }
 }
