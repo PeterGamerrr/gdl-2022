@@ -84,37 +84,42 @@ public class PlayerController : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        moveDir = new Vector2 (horizontalInput, verticalInput).normalized;
+        moveDir = new Vector2 (horizontalInput, verticalInput);
+
+        if (moveDir.magnitude > 1)
+        {
+            moveDir = moveDir / moveDir.magnitude;
+        }
     }
 
 
 
     void MovePlayer()
     {
-        movementVel = rb.position + moveDir * moveSpeed * Time.deltaTime * (float)Math.Pow(moveSpeedMul, StatManager.Instance.Speed);
-        rb.MovePosition(movementVel);
-
-        /*        float targetSpeed = horizontalInput * moveSpeed;
-                float speedDif = targetSpeed - rb.velocity.magnitude;
-                float accelRate = (Mathf.Abs(speedDif) > 0.01f) ? acceleration : decceleration;
-
-                float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPower) * Mathf.Sign(speedDif);
-
-        *//*        movementVel.x = movement * Vector2.right;
-                movementVel.y = movement * Vector2.up;*//*
 
 
-                rb.AddForce(movement * Vector2.right);*/
+        float targetSpeedHorizontal = moveDir.x * moveSpeed;
+        float targetSpeedVertical = moveDir.y * moveSpeed;
+        float speedDifX = targetSpeedHorizontal - rb.velocity.x;
+        float speedDifY = targetSpeedVertical - rb.velocity.y;
+        float accelRateX = (Mathf.Abs(speedDifX) > 0.01f) ? acceleration : decceleration;
+        float accelRateY = (Mathf.Abs(speedDifY) > 0.01f) ? acceleration : decceleration;
+
+        float movementX = Mathf.Pow(Mathf.Abs(speedDifX) * accelRateX, velPower) * Mathf.Sign(speedDifX);
+        float movementY = Mathf.Pow(Mathf.Abs(speedDifY) * accelRateY, velPower) * Mathf.Sign(speedDifY);
+
+        movementVel.x = movementX * Vector2.right.x;
+        movementVel.y = movementY * Vector2.up.y;
+
+
+        rb.AddForce(movementVel);
+
+
+        Debug.Log(movementVel.ToString());
+
     }
 
 
-    void RotateTowardsMouse()
-    {
-        direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        direction.Normalize();
-        float rotation_z = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, rotation_z);
-    }
 
     void FlipTowardsMouse()
     {
