@@ -4830,7 +4830,7 @@ GameObject:
   - component: {fileID: -522644022302666772}
   m_Layer: 0
   m_Name: FireBall
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4943,6 +4943,9 @@ MonoBehaviour:
   canDamageEnemy: 1
   hasExplosion: 1
   hitSound: {fileID: 5521744699619342657}
+  nonHittableTags:
+  - Bullet
+  - Player
 --- !u!58 &6442279261084793055
 CircleCollider2D:
   m_ObjectHideFlags: 0
