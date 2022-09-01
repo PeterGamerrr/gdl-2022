@@ -113,6 +113,12 @@ public class PlayerController : MonoBehaviour
 
 
         rb.AddForce(movementVel);
+<<<<<<< HEAD
+=======
+
+
+        Debug.Log(movementVel.ToString());
+>>>>>>> main
 
     }
 
