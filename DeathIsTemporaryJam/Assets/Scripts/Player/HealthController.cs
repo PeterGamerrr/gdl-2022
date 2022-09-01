@@ -7,10 +7,10 @@ public class HealthController : MonoBehaviour
 {
     public UnityEvent DeathEvent = new();
 
-    public int MaxHealth = 100;
-    public int Health = 100;
+    [SerializeField] int MaxHealth = 100;
+    [SerializeField] int Health = 100;
 
-    public GameObject HealthBar;
+    [SerializeField] GameObject HealthBar;
     [SerializeField] AudioSource hurtSound;
 
     public void Start()

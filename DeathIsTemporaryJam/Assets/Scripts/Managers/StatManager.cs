@@ -21,7 +21,7 @@ namespace Assets.Scripts
         public UnityEvent UpGradeEvent = new();
 
 
-        public int UpgradePoints = 0;
+        [SerializeField] int UpgradePoints = 0;
 
         public int Speed = 0;
         public int Health = 0;
@@ -31,13 +31,13 @@ namespace Assets.Scripts
         public int Piercing = 0;
         public int Explosion = 0;
 
-        public TextMeshProUGUI SpeedVisual;
-        public TextMeshProUGUI HealthVisual;
-        public TextMeshProUGUI GunVisual;
-        public TextMeshProUGUI DamageVisual;
-        public TextMeshProUGUI PiercingVisual;
-        public TextMeshProUGUI ExplosionVisual;
-        public TextMeshProUGUI UpgradesVisual;
+        [SerializeField] TextMeshProUGUI SpeedVisual;
+        [SerializeField] TextMeshProUGUI HealthVisual;
+        [SerializeField] TextMeshProUGUI GunVisual;
+        [SerializeField] TextMeshProUGUI DamageVisual;
+        [SerializeField] TextMeshProUGUI PiercingVisual;
+        [SerializeField] TextMeshProUGUI ExplosionVisual;
+        [SerializeField] TextMeshProUGUI UpgradesVisual;
 
         [SerializeField] TextMeshProUGUI ingameUpgradesVisual;
 

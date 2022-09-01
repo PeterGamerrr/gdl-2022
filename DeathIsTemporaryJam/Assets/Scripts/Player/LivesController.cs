@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class LivesController : MonoBehaviour
 {
     public UnityEvent GameOverEvent = new();
-    public List<GameObject> LivesList = new();
+    [SerializeField] List<GameObject> LivesList = new();
 
     public int Lives = 5;
 
