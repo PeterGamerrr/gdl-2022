@@ -24,7 +24,8 @@ public class WaveSpawner : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI waveVisual;
     [SerializeField] TextMeshProUGUI enemyCountVisual;
-
+    [SerializeField] TextMeshProUGUI waveCountdownText;
+    [SerializeField] GameObject waveOverUI;
 
     Camera cam;
 
@@ -33,7 +34,7 @@ public class WaveSpawner : MonoBehaviour
     private float spawnY;
     private float outerSpawn;
     private int axisRandomiser;
-
+    private int waveCountdownTimer;
 
     private int currentWave = 0;
     private int currentAmountOfEnemies;
@@ -158,13 +159,25 @@ public class WaveSpawner : MonoBehaviour
         IncreaseWave();
         CheckEnemyLVL();
         Debug.Log("Spawning wave " + currentWave + " in " + waveCooldownInSeconds + " seconds.");
+        StartCoroutine(CountdownTimer());
         yield return new WaitForSeconds(waveCooldownInSeconds);
+        waveOverUI.SetActive(false);
         SpawnWaves(currentWave);
         Debug.Log("Spawned wave " + currentWave);
         waveVisual.text = "" + currentWave;
         enemyCountVisual.text = "" + waveEnemies.Count;
     }
 
+
+    IEnumerator CountdownTimer()
+    {
+        for (int i = 0; i < waveCooldownInSeconds; i++)
+        {
+            waveCountdownTimer = waveCooldownInSeconds - i;
+            waveCountdownText.text = waveCountdownTimer.ToString();
+            yield return new WaitForSeconds(1);
+        }
+    }
 
     void EnemyDeathListener(GameObject enemy)
     {
@@ -184,6 +197,7 @@ public class WaveSpawner : MonoBehaviour
 
         if (waveEnemies.Count <= 0)
         {
+            waveOverUI.SetActive(true);
             StartCoroutine(SpawnNextWave());
         }
 
