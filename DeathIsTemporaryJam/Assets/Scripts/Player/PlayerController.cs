@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float velPower;
 
     [SerializeField] Animator animator;
+    [SerializeField] int footstepDelay;
 
     private Rigidbody2D rb;
 
@@ -67,6 +68,7 @@ public class PlayerController : MonoBehaviour
             || verticalInput <= -0.05)
         {
             animator.SetBool("IsMoving", true);
+          //  StartCoroutine(PlayFootStepSound());
         }
         if (horizontalInput <= 0.05
             && verticalInput <= 0.05
@@ -74,9 +76,17 @@ public class PlayerController : MonoBehaviour
             && verticalInput >= -0.05)
         {
             animator.SetBool("IsMoving", false);
+           // StopCoroutine(PlayFootStepSound());
         }
     }
+/*
+    IEnumerator PlayFootStepSound()
+    {
+        for (int i = 0; i < len; i++)
+        {
 
+        }
+    }*/
 
 
     void HandleInput()
