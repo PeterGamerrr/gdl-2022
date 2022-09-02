@@ -51,6 +51,7 @@ public class EnemyShooting : MonoBehaviour
         bulletScript.Damage = damage;
         bulletRB = bulletObject.GetComponent<Rigidbody2D>();
         bulletRB.AddForce(direction.normalized * bulletSpeed);
+        GameManager.Instance.Bullets.Add(bulletObject);
     }
 
     Quaternion RotateTowardsPlayer()

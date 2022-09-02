@@ -31,6 +31,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject GameNumbers;
 
 
+    public List<GameObject> Bullets = new List<GameObject>();
+
+    private void Awake()
+    {
+        _instance = this;
+    }
+
+
     void Start()
     {
         HealthController.DeathEvent.AddListener(OnDeath);
@@ -52,6 +60,7 @@ public class GameManager : MonoBehaviour
         HealthBar.SetActive(false);
         GameNumbers.SetActive(false);
         WaveSpawner.ResetWaves();
+        RemoveBullets(); 
         StatManager.Instance.GiveUpgradePoint(0);
         Time.timeScale = 0;
     }
@@ -80,5 +89,14 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
+    }
+
+
+    private void RemoveBullets()
+    {
+        foreach (GameObject bullet in Bullets)
+        {
+            Destroy(bullet);
+        }
     }
 }

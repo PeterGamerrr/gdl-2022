@@ -81,6 +81,7 @@ public class Shooting : MonoBehaviour
         bulletScript.ExplosionDamage = explosionMul * 5;
         bulletRB = bulletObject.GetComponent<Rigidbody2D>();
         bulletRB.AddForce(direction.normalized * bulletSpeed + playerController.movementVel);
+        GameManager.Instance.Bullets.Add(bulletObject);
     }
 
     Quaternion RotateTowardsMouse()
