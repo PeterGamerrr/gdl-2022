@@ -62,6 +62,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void TogglePause()
+    {
+        if (GameState == GameState.PLAYING)
+        {
+            Pause();
+        }
+        if (GameState == GameState.PAUSE)
+        {
+            UnPause();
+        }
+    }
     public void UnPause()
     {
         PauseMenu.SetActive(false);
