@@ -10,6 +10,8 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] GameObject[] enemyTypes;
     [SerializeField] GameObject player;
     [SerializeField] Transform enemyParent;
+    private ChestSpawner chestSpawner;
+
 
     [SerializeField] float spawnBuffer;
 
@@ -44,6 +46,8 @@ public class WaveSpawner : MonoBehaviour
 
     void Start()
     {
+        chestSpawner = GetComponent<ChestSpawner>();
+
         cam = Camera.main;
         currentAmountOfEnemies = startEnemyAmount;
 
@@ -166,6 +170,7 @@ public class WaveSpawner : MonoBehaviour
         Debug.Log("Spawned wave " + currentWave);
         waveVisual.text = "" + currentWave;
         enemyCountVisual.text = "" + waveEnemies.Count;
+        chestSpawner.CheckWave(currentWave);
     }
 
 
