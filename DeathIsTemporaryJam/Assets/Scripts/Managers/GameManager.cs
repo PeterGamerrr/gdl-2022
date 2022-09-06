@@ -13,10 +13,11 @@ public class GameManager : MonoBehaviour
     {
         get
         {
-            if (_instance == null) Debug.LogError("Gamemanager is null");
+            if (_instance is null) Debug.LogError("Gamemanager is null");
             return _instance;
         }
     }
+    public GameState GameState = GameState.MAINMENU;
 
     private SceneManager _sceneManager = new();
 
@@ -29,6 +30,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject GameOverMenu;
     [SerializeField] GameObject UpgradeMenu;
     [SerializeField] GameObject GameNumbers;
+    [SerializeField] GameObject PauseMenu;
 
 
     public List<GameObject> Bullets = new List<GameObject>();
@@ -43,7 +45,37 @@ public class GameManager : MonoBehaviour
     {
         HealthController.DeathEvent.AddListener(OnDeath);
         LivesController.GameOverEvent.AddListener(OnGameOver);
+    }
 
+    private void Update()
+    {
+        if (Input.GetKey("escape"))
+        {
+            if (GameState == GameState.PLAYING)
+            {
+                Pause();
+            }
+            if (GameState == GameState.PAUSE)
+            {
+                UnPause();
+            }
+        }
+    }
+
+    public void UnPause()
+    {
+        PauseMenu.SetActive(false);
+        HealthBar.SetActive(true);
+        GameNumbers.SetActive(true);
+        Time.timeScale = 1;
+    }
+
+    public void Pause()
+    {
+        PauseMenu.SetActive(true);
+        HealthBar.SetActive(false);
+        GameNumbers.SetActive(false);
+        Time.timeScale = 0;
     }
 
     public void StartGame()
@@ -52,6 +84,7 @@ public class GameManager : MonoBehaviour
         HealthBar.SetActive(true);
         GameNumbers.SetActive(true);
         WaveSpawner.StartWaves();
+        GameState = GameState.PLAYING;
     }
 
     public void OnDeath()
@@ -63,6 +96,7 @@ public class GameManager : MonoBehaviour
         RemoveBullets(); 
         StatManager.Instance.GiveUpgradePoint(0);
         Time.timeScale = 0;
+        GameState = GameState.UPGRADE;
     }
 
     public void ContinueAfterDeath()
@@ -73,6 +107,7 @@ public class GameManager : MonoBehaviour
         HealthController.ResetHealth();
         WaveSpawner.StartWaves();
         Time.timeScale = 1;
+        GameState = GameState.PLAYING;
 
     }
 
@@ -82,13 +117,13 @@ public class GameManager : MonoBehaviour
         GameNumbers.SetActive(false);
         GameOverMenu.SetActive(true);
         HealthBar.SetActive(false);
+        GameState = GameState.GAMEOVER;
 
     }
 
     public void ContinueAfterGameOver()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
     }
 
 
