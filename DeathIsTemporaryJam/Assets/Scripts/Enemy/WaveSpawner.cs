@@ -53,10 +53,10 @@ public class WaveSpawner : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+/*        if (Input.GetKeyDown(KeyCode.Return))
         {
             StartCoroutine(SpawnNextWave());
-        }
+        }*/
 
 
     }

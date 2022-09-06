@@ -8,4 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Nick.unity
     guid: 1bb6eb04f818cf949b8dc58ff9f70b18
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: b65446909e957d244a773567674c95b6,
+      type: 2}

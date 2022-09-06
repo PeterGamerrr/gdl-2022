@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Shooting : MonoBehaviour
 {
@@ -51,7 +52,14 @@ public class Shooting : MonoBehaviour
             Fire();
         }*/
 
-        if (Input.GetKey(KeyCode.Space))
+
+    }
+
+
+
+    public void ShootOnInput(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
         {
             Shoot();
         }
@@ -72,12 +80,12 @@ public class Shooting : MonoBehaviour
     {
         Bullet bulletScript;
         castSound.Play();
-        direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - shootingPoint.transform.position;
+        direction = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - shootingPoint.transform.position;
         shootRotation = RotateTowardsMouse();
         bulletObject = Instantiate(bullet, shootingPoint.position, shootRotation, bulletParent); 
         bulletScript = bulletObject.GetComponent<Bullet>();
         bulletScript.Damage = damage + (int) (damage * 0.2 * damageMul);
-        bulletScript.Piercing = piercing + piercingMul;
+        bulletScript.Piercing = piercing + piercingMul; 
         bulletScript.ExplosionDamage = explosionMul * 5;
         bulletRB = bulletObject.GetComponent<Rigidbody2D>();
         bulletRB.AddForce(direction.normalized * bulletSpeed + playerController.movementVel);
@@ -86,7 +94,7 @@ public class Shooting : MonoBehaviour
 
     Quaternion RotateTowardsMouse()
     {
-        direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - shootingPoint.transform.position;
+        direction = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - shootingPoint.transform.position;
         direction.Normalize();
         float rotation_z = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         return Quaternion.Euler(0f, 0f, rotation_z);

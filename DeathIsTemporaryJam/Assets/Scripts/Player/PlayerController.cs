@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -32,13 +33,14 @@ public class PlayerController : MonoBehaviour
 
 
 
-
     private void Start()
     {
+
         rb = GetComponent<Rigidbody2D>();
         StatManager.Instance.UpGradeEvent.AddListener(OnUpgrade);
 
     }
+
 
     private void OnUpgrade()
     {
@@ -46,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        HandleInput();
+ //       HandleInput();
         //RotateTowardsMouse();
         FlipTowardsMouse();
         UpdateAnimations();
@@ -89,12 +91,13 @@ public class PlayerController : MonoBehaviour
     }*/
 
 
-    void HandleInput()
+    public void HandleInput(InputAction.CallbackContext context)
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
+        Debug.Log(context.phase);
+        Debug.Log(context.ReadValue<Vector2>());
 
-        moveDir = new Vector2 (horizontalInput, verticalInput);
+
+        moveDir = context.ReadValue<Vector2>();
 
         if (moveDir.magnitude > 1)
         {
@@ -131,7 +134,7 @@ public class PlayerController : MonoBehaviour
 
     void FlipTowardsMouse()
     {
-        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         if (mousePos.x < transform.position.x && transform.localScale.x > 0 || mousePos.x > transform.position.x && transform.localScale.x < 0)
         {
             newScale = gameObject.transform.localScale;
