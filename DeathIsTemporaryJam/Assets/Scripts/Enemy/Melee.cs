@@ -44,11 +44,10 @@ public class Melee : MonoBehaviour
 
     void CheckAttackDistance()
     {
-        Debug.Log(DistanceToPlayer());
         if (DistanceToPlayer() <= attackRange && !isAttacking)
         {
             destinationSetter.target = transform;
-            Debug.LogWarning("In Range");
+
             StartCoroutine(AttackPlayer());
             isAttacking = true;
         }

@@ -37,19 +37,12 @@ public class PlayerController : MonoBehaviour
     {
 
         rb = GetComponent<Rigidbody2D>();
-        StatManager.Instance.UpGradeEvent.AddListener(OnUpgrade);
 
     }
 
-
-    private void OnUpgrade()
-    {
-    }
 
     void Update()
     {
- //       HandleInput();
-        //RotateTowardsMouse();
         FlipTowardsMouse();
         UpdateAnimations();
     }
@@ -81,22 +74,11 @@ public class PlayerController : MonoBehaviour
            // StopCoroutine(PlayFootStepSound());
         }
     }
-/*
-    IEnumerator PlayFootStepSound()
-    {
-        for (int i = 0; i < len; i++)
-        {
 
-        }
-    }*/
 
 
     public void HandleInput(InputAction.CallbackContext context)
     {
-        Debug.Log(context.phase);
-        Debug.Log(context.ReadValue<Vector2>());
-
-
         moveDir = context.ReadValue<Vector2>();
 
         if (moveDir.magnitude > 1)
