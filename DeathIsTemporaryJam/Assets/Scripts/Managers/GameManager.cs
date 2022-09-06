@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -13,7 +14,7 @@ public class GameManager : MonoBehaviour
     {
         get
         {
-            if (_instance is null) Debug.LogError("Gamemanager is null");
+            if (_instance == null) Debug.LogError("Gamemanager is null");
             return _instance;
         }
     }
@@ -47,23 +48,9 @@ public class GameManager : MonoBehaviour
         LivesController.GameOverEvent.AddListener(OnGameOver);
     }
 
-    private void Update()
+    public void TogglePause(InputAction.CallbackContext context)
     {
-        if (Input.GetKey("escape"))
-        {
-            if (GameState == GameState.PLAYING)
-            {
-                Pause();
-            }
-            if (GameState == GameState.PAUSE)
-            {
-                UnPause();
-            }
-        }
-    }
-
-    public void TogglePause()
-    {
+        Debug.LogError("CODE IS ALIVE");
         if (GameState == GameState.PLAYING)
         {
             Pause();
