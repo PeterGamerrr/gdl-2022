@@ -133,7 +133,7 @@ public class GameManager : MonoBehaviour
 
     public void ShowSettings()
     {
-        SettingsMenu.SetActive(false);
+        SettingsMenu.SetActive(true);
     }
 
     public void HideSettings()
