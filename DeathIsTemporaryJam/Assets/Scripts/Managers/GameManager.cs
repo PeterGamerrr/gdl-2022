@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject SettingsMenu;
 
     private DateTime _pauseCooldownTimeStamp;
-    private const float _pauseCooldownTime = 1;
+    private const float _pauseCooldownTime = 0.4f;
     
     private void Awake()
     {
@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviour
     public void UnPause()
     {
         PauseMenu.SetActive(false);
+        SettingsMenu.SetActive(false);
         HealthBar.SetActive(true);
         GameNumbers.SetActive(true);
         Time.timeScale = 1;
