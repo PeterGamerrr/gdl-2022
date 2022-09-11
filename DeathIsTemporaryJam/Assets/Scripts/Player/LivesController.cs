@@ -7,7 +7,14 @@ using UnityEngine.Events;
 public class LivesController : MonoBehaviour
 {
     public UnityEvent GameOverEvent = new();
-    [SerializeField] List<GameObject> LivesList = new();
+
+    
+    [Header("hearts")] //Made it 5 separate lists because list of list wouldn't work in unity inspector. 
+    [SerializeField] private List<GameObject> hearts1 = new();
+    [SerializeField] private List<GameObject> hearts2 = new();
+    [SerializeField] private List<GameObject> hearts3 = new();
+    [SerializeField] private List<GameObject> hearts4 = new();
+    [SerializeField] private List<GameObject> hearts5 = new();
 
     public int Lives = 5;
 
@@ -25,13 +32,11 @@ public class LivesController : MonoBehaviour
             return;
         } 
         Lives--;
-        if (LivesList != null && LivesList.Count > 0)
-        {
-            for (int i = 0; i < LivesList.Count; i++)
-            {
-                LivesList[i].gameObject.SetActive(i <= Lives);
-            }
-        }
+        hearts1.ForEach(e => e.SetActive(Lives >= 1));
+        hearts2.ForEach(e => e.SetActive(Lives >= 2));
+        hearts3.ForEach(e => e.SetActive(Lives >= 3));
+        hearts4.ForEach(e => e.SetActive(Lives >= 4));
+        hearts5.ForEach(e => e.SetActive(Lives >= 5));
     }
 
     private void GameOver()
