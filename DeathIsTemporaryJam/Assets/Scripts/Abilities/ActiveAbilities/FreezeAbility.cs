@@ -4,10 +4,12 @@ using UnityEngine;
 using Pathfinding;
 using System;
 using System.Threading.Tasks;
+using Sirenix.OdinInspector;
 
 [CreateAssetMenu(menuName = "Abilities/FreezeAbility")]
 public class FreezeAbility : Ability
 {
+    [Title("Ability Information")]
     public int freezeTime;
     public float range;
 

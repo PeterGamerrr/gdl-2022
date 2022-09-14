@@ -5,11 +5,13 @@ using UnityEngine;
 
 public abstract class Ability : ScriptableObject
 {
+    [Title("Ability Icon")]
     [HorizontalGroup("Split", LabelWidth = 60)]
     [VerticalGroup("Split/Left")]
     [HideLabel]
     [PreviewField(50, ObjectFieldAlignment.Left)] public Sprite aSprite;
 
+    [Title("General Information")]
     [LabelText("Name")]
     [VerticalGroup("Split/Right")]
     public string aName = "New Ability";
