@@ -9,10 +9,10 @@ using UnityEngine.InputSystem;
 public class AbilityCooldown : MonoBehaviour
 {
 
+    public Ability ability;
     public Image darkMask;
     public TextMeshProUGUI coolDownTextDisplay;
 
-    [SerializeField] private Ability ability;
     [SerializeField] private GameObject player;
     private Image buttonImage;
     private AudioSource abilityAudio;
@@ -67,7 +67,7 @@ public class AbilityCooldown : MonoBehaviour
 
     public void OnButtonPushed()
     {
-        if (coolDownComplete)
+        if (coolDownComplete && ability != null)
         {
             nextReadyTime = coolDownDuration + Time.time;
             coolDownTimeLeft = coolDownDuration;

@@ -32,9 +32,14 @@ public class Shooting : MonoBehaviour
     private int explosionMul = 0;
     Quaternion shootRotation;
 
+/*    PlayerControls playerControls;
+    PlayerControls.PlayerActions playerActions;*/
+
     private void Start()
     {
         StatManager.Instance.UpGradeEvent.AddListener(OnUpgradeEvent);
+        /*playerControls = new PlayerControls();
+        playerActions = playerControls.Player;*/
     }
 
     private void OnUpgradeEvent()
@@ -52,6 +57,10 @@ public class Shooting : MonoBehaviour
             Fire();
         }*/
 
+/*        if (playerActions.Fire.phase == InputActionPhase.Performed)
+        {
+            Shoot();
+        }*/
 
     }
 
