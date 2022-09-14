@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Abilities/FieldAbility")]
 public class FieldAbility : Ability
 {
+    [Title("Ability Information")]
     [InlineEditor]
     public Field field;
 

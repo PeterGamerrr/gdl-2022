@@ -15,5 +15,5 @@ MonoBehaviour:
   aSprite: {fileID: 21300000, guid: 0c443b0d8e33d0143b0bf6943d9e2254, type: 3}
   aName: SlowField
   aSound: {fileID: 8300000, guid: bd36dafac6f23124ba75925a569e4cdc, type: 3}
-  aBaseCoolDown: 1
+  aBaseCoolDown: 5
   field: {fileID: 5475267642068247370, guid: 040fb1167c490ec4fafa12b2a7866710, type: 3}

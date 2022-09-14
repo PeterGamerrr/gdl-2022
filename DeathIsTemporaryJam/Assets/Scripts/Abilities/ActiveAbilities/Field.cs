@@ -1,9 +1,11 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Field : MonoBehaviour
 {
+    [Title("Field Settings")]
     public float fieldTime;
     public float fieldSize;
 
