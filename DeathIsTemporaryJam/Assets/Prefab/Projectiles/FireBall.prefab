@@ -4946,6 +4946,7 @@ MonoBehaviour:
   nonHittableTags:
   - Bullet
   - Player
+  - Field
 --- !u!58 &6442279261084793055
 CircleCollider2D:
   m_ObjectHideFlags: 0

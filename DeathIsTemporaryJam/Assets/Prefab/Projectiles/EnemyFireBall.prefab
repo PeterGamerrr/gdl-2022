@@ -4941,9 +4941,10 @@ MonoBehaviour:
   canDamageEnemy: 0
   hasExplosion: 0
   hitSound: {fileID: -1266577451412931234}
-  hittableTags:
-  - Enemy
+  nonHittableTags:
+  - Field
   - Bullet
+  - Enemy
 --- !u!58 &6442279261084793055
 CircleCollider2D:
   m_ObjectHideFlags: 0

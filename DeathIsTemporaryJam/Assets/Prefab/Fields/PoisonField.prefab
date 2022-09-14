@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2019991945288853117}
   m_Layer: 0
   m_Name: PoisonField
-  m_TagString: Untagged
+  m_TagString: Field
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -117,5 +117,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fieldTime: 5
   fieldSize: 5
-  damage: 10
+  damage: 5
   poisonCooldown: 1

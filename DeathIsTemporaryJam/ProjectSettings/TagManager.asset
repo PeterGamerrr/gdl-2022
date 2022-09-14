@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Bullet
   - NoHitItem
+  - Field
   layers:
   - Default
   - TransparentFX
