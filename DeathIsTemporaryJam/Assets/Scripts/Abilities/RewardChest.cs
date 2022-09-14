@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class RewardChest : MonoBehaviour
 {
-
     private bool isOpen;
     private Animator animator;
 
@@ -24,9 +24,10 @@ public class RewardChest : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-        {
-            animator.SetBool("isOpen", true);
-            OpenChest();
-        }
-    }
-}
+        {                                             
+            animator.SetBool("isOpen", true);         
+            OpenChest();                              
+        }                                             
+    }                                                 
+}                                                     
+                                                      

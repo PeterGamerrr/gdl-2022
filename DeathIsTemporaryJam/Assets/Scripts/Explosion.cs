@@ -23,11 +23,8 @@ public class Explosion : MonoBehaviour
     public void Explode()
     {
         if (damage <= 0) return;
-        Debug.LogWarning("Boom");
         explosionSound.Play();
         hitColliders = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), range);
-        Debug.LogWarning("Boom, but after the colliders");
-        Debug.LogWarning(hitColliders.Length);
 
         foreach (Collider2D collider in hitColliders)
         {
@@ -35,15 +32,12 @@ public class Explosion : MonoBehaviour
             {
                 healthManager = collider.GetComponent<EnemyHealthManager>();
                 healthManager.Damage(damage);
-                Debug.LogWarning("EnemyExplode");
             }
             if (collider.gameObject.CompareTag("Player") && canDamagePlayer)
             {
                 healthController = collider.gameObject.GetComponentInParent<HealthController>();
                 healthController.Damage(damage);
-                Debug.LogWarning("PlayerExplode");
             }
-            Debug.LogWarning(collider.gameObject.tag);
         }
  
     }

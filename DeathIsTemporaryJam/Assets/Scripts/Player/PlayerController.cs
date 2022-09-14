@@ -57,18 +57,18 @@ public class PlayerController : MonoBehaviour
 
     void UpdateAnimations()
     {
-        if (horizontalInput >= 0.05
-            || verticalInput >= 0.05
-            || horizontalInput <= -0.05
-            || verticalInput <= -0.05)
+        if (moveDir.x >= 0.05
+            || moveDir.y >= 0.05
+            || moveDir.x <= -0.05
+            || moveDir.y <= -0.05)
         {
             animator.SetBool("IsMoving", true);
           //  StartCoroutine(PlayFootStepSound());
         }
-        if (horizontalInput <= 0.05
-            && verticalInput <= 0.05
-            && horizontalInput >= -0.05
-            && verticalInput >= -0.05)
+        if (moveDir.x <= 0.05
+            && moveDir.y <= 0.05
+            && moveDir.x >= -0.05
+            && moveDir.y >= -0.05)
         {
             animator.SetBool("IsMoving", false);
            // StopCoroutine(PlayFootStepSound());

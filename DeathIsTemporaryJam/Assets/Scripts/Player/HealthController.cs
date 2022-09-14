@@ -37,7 +37,6 @@ public class HealthController : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("Die");
         DeathEvent.Invoke();
         ResetHealth();
     }

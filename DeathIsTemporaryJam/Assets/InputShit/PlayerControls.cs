@@ -53,6 +53,33 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Tap"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Special1"",
+                    ""type"": ""Button"",
+                    ""id"": ""cf884488-f55e-4a08-b371-f8c7433514f5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Special2"",
+                    ""type"": ""Button"",
+                    ""id"": ""aeb3f1ff-4a83-4961-8ccf-045f8193942a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Special3"",
+                    ""type"": ""Button"",
+                    ""id"": ""41f43a3d-6173-42ae-963d-d03776475009"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -251,6 +278,39 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4890133a-d591-4ac9-9d5f-2e7dae2a5b16"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Special1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6b956bea-eb69-482c-b46f-ff2c879244e5"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Special2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""812c95f2-3d81-4484-a687-6d0a3d1ecf96"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Special3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -841,6 +901,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+        m_Player_Special1 = m_Player.FindAction("Special1", throwIfNotFound: true);
+        m_Player_Special2 = m_Player.FindAction("Special2", throwIfNotFound: true);
+        m_Player_Special3 = m_Player.FindAction("Special3", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -915,6 +978,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_Pause;
+    private readonly InputAction m_Player_Special1;
+    private readonly InputAction m_Player_Special2;
+    private readonly InputAction m_Player_Special3;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -922,6 +988,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
+        public InputAction @Special1 => m_Wrapper.m_Player_Special1;
+        public InputAction @Special2 => m_Wrapper.m_Player_Special2;
+        public InputAction @Special3 => m_Wrapper.m_Player_Special3;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -940,6 +1009,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Special1.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecial1;
+                @Special1.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecial1;
+                @Special1.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecial1;
+                @Special2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecial2;
+                @Special2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecial2;
+                @Special2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecial2;
+                @Special3.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecial3;
+                @Special3.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecial3;
+                @Special3.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecial3;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -953,6 +1031,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @Special1.started += instance.OnSpecial1;
+                @Special1.performed += instance.OnSpecial1;
+                @Special1.canceled += instance.OnSpecial1;
+                @Special2.started += instance.OnSpecial2;
+                @Special2.performed += instance.OnSpecial2;
+                @Special2.canceled += instance.OnSpecial2;
+                @Special3.started += instance.OnSpecial3;
+                @Special3.performed += instance.OnSpecial3;
+                @Special3.canceled += instance.OnSpecial3;
             }
         }
     }
@@ -1112,6 +1199,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnSpecial1(InputAction.CallbackContext context);
+        void OnSpecial2(InputAction.CallbackContext context);
+        void OnSpecial3(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
