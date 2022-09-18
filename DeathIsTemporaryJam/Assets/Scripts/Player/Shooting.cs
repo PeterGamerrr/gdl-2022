@@ -32,6 +32,8 @@ public class Shooting : MonoBehaviour
     private int explosionMul = 0;
     Quaternion shootRotation;
 
+    private bool toggleShooting = false;
+
 /*    PlayerControls playerControls;
     PlayerControls.PlayerActions playerActions;*/
 
@@ -52,16 +54,10 @@ public class Shooting : MonoBehaviour
 
     void Update()
     {
-/*        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Fire();
-        }*/
-
-/*        if (playerActions.Fire.phase == InputActionPhase.Performed)
+        if (toggleShooting)
         {
             Shoot();
-        }*/
-
+        }
     }
 
 
@@ -70,7 +66,12 @@ public class Shooting : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started)
         {
-            Shoot();
+            toggleShooting = true;
+        }
+
+        if (context.phase == InputActionPhase.Canceled)
+        {
+            toggleShooting = false;
         }
     }
 
