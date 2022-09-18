@@ -11,7 +11,7 @@ public class ChestSpawner : MonoBehaviour
     [SerializeField] GameObject rewardCrate;
     [SerializeField] Transform spawnPosition;
 
-
+    private GameObject activeChest;
 
 
     public void CheckWave(int wave)
@@ -24,8 +24,12 @@ public class ChestSpawner : MonoBehaviour
 
     void SpawnCrate()
     {
-        Instantiate(rewardCrate, spawnPosition.position, spawnPosition.rotation, spawnPosition);
+        activeChest = Instantiate(rewardCrate, spawnPosition.position, spawnPosition.rotation, spawnPosition);
     }
 
+    public void DestroyChest()
+    {
+        Destroy(activeChest);
+    }
 
 }

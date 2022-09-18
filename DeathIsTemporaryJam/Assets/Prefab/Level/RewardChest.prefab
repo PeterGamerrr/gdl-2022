@@ -145,3 +145,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef39e90ad542b9949b6932e30bcaa5a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilitySwitchMenu: {fileID: 0}
+  abilities:
+  - {fileID: 11400000, guid: 78b8d8926848d494794968faa2d036cd, type: 2}
+  - {fileID: 11400000, guid: d9e3f27862337614688317c916a5b42e, type: 2}
+  - {fileID: 11400000, guid: 7ce6bf3b721d0a94dacc33860a91b10f, type: 2}
+  - {fileID: 11400000, guid: 9aa3264a85d765b45ab9d3ac2e1bf05f, type: 2}

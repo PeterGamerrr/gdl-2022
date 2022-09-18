@@ -57,11 +57,6 @@ public class WaveSpawner : MonoBehaviour
 
     void Update()
     {
-/*        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            StartCoroutine(SpawnNextWave());
-        }*/
-
 
     }
 
@@ -150,7 +145,6 @@ public class WaveSpawner : MonoBehaviour
 
     void SpawnWaves(int wave)
     {
-        Debug.Log(currentWaveMultiplier);
 
         currentAmountOfEnemies = (int) (startEnemyAmount * Mathf.Pow(waveMultiplier,wave) );
 
@@ -162,15 +156,13 @@ public class WaveSpawner : MonoBehaviour
 
         IncreaseWave();
         CheckEnemyLVL();
-        Debug.Log("Spawning wave " + currentWave + " in " + waveCooldownInSeconds + " seconds.");
         StartCoroutine(CountdownTimer());
+        chestSpawner.CheckWave(currentWave);
         yield return new WaitForSeconds(waveCooldownInSeconds);
         waveOverUI.SetActive(false);
         SpawnWaves(currentWave);
-        Debug.Log("Spawned wave " + currentWave);
         waveVisual.text = "" + currentWave;
         enemyCountVisual.text = "" + waveEnemies.Count;
-        chestSpawner.CheckWave(currentWave);
     }
 
 

@@ -1,3 +1,5 @@
+using Assets.Scripts;
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,13 +7,18 @@ using UnityEngine.UI;
 
 public class AbilitySwitcher : MonoBehaviour
 {
-    [SerializeField] AbilityCooldown[] activeAbilies;
+    [Title("Values")]
+    [SerializeField] int sellPointAmount;
+    
+    [Title("References")]
+    [SerializeField] public AbilityCooldown[] activeAbilies;
     [SerializeField] Button[] slots;
     [SerializeField] Button newAbilityButton;
     [SerializeField] GameObject player;
+    [SerializeField] ChestSpawner chestSpawner;
 
 
-    public Ability newAbility; //TODO: change to set automatically after opening chest
+    public Ability newAbility;
 
 
     private void Start()
@@ -44,7 +51,20 @@ public class AbilitySwitcher : MonoBehaviour
                 activeAbilies[2].Initialize(newAbility, player);
                 break;
         }
+        CloseMenu();
+    }
+
+    public void SellAbility()
+    {
+        StatManager.Instance.GiveUpgradePoint(sellPointAmount);
+        CloseMenu();
+    }
+
+    void CloseMenu()
+    {
         SetButtonImages();
+        chestSpawner.DestroyChest();
         gameObject.SetActive(false);
+        Time.timeScale = 1;
     }
 }

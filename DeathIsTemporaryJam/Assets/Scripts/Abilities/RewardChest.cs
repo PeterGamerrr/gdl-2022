@@ -5,11 +5,18 @@ using UnityEngine;
 
 public class RewardChest : MonoBehaviour
 {
+    [SerializeField] GameObject abilitySwitchMenu;
+    [SerializeField] Ability[] abilities;
+
+    private AbilitySwitcher abilitySwitcher;
     private bool isOpen;
     private Animator animator;
+    private Ability reward;
+
 
     private void Start()
     {
+        abilitySwitcher = abilitySwitchMenu.GetComponent<AbilitySwitcher>();
         animator = GetComponent<Animator>();
     }
 
@@ -17,7 +24,9 @@ public class RewardChest : MonoBehaviour
 
     void OpenChest()
     {
-        //TODO: open chest and give rewards
+        Time.timeScale = 0;
+        abilitySwitchMenu.SetActive(true);
+        abilitySwitcher.newAbility = RandomAbility();
     }
 
 
@@ -28,6 +37,20 @@ public class RewardChest : MonoBehaviour
             animator.SetBool("isOpen", true);         
             OpenChest();                              
         }                                             
-    }                                                 
+    }                         
+    
+    Ability RandomAbility()
+    {
+        reward = abilities[Random.Range(0, abilities.Length)];
+        foreach (AbilityCooldown slot in abilitySwitcher.activeAbilies)
+        {
+            if (slot.ability == reward)
+            {
+                reward = RandomAbility();
+            }
+        }
+        return reward;
+        
+    }
 }                                                     
                                                       
