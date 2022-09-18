@@ -50,7 +50,11 @@ public class RewardChest : MonoBehaviour
             }
         }
         return reward;
-        
+    }
+
+    public void DestroyChest()
+    {
+        Destroy(gameObject);
     }
 }                                                     
                                                       
