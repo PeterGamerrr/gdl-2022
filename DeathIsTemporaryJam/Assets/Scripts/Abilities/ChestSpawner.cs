@@ -10,8 +10,9 @@ public class ChestSpawner : MonoBehaviour
     [Header("References")]
     [SerializeField] GameObject rewardCrate;
     [SerializeField] Transform spawnPosition;
+    [SerializeField] GameObject abilitySwitchMenu;
 
-    private GameObject activeChest;
+    public RewardChest activeChest;
 
 
     public void CheckWave(int wave)
@@ -24,7 +25,8 @@ public class ChestSpawner : MonoBehaviour
 
     void SpawnCrate()
     {
-        activeChest = Instantiate(rewardCrate, spawnPosition.position, spawnPosition.rotation, spawnPosition);
+        activeChest = Instantiate(rewardCrate, spawnPosition.position, spawnPosition.rotation, spawnPosition).GetComponent<RewardChest>();
+        activeChest.abilitySwitchMenu = abilitySwitchMenu;
     }
 
     public void DestroyChest()

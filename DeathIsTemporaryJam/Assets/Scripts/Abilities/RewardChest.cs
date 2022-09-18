@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class RewardChest : MonoBehaviour
 {
-    [SerializeField] GameObject abilitySwitchMenu;
+    public GameObject abilitySwitchMenu;
     [SerializeField] Ability[] abilities;
 
     private AbilitySwitcher abilitySwitcher;

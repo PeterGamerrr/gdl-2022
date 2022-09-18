@@ -121,7 +121,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1683659761057274142}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2110699402}
+        m_TargetAssemblyTypeName: SettingsController, Assembly-CSharp
+        m_MethodName: RebindPause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &215516824775743573
 GameObject:
   m_ObjectHideFlags: 0
@@ -1121,7 +1133,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7373891469241295267}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2110699402}
+        m_TargetAssemblyTypeName: SettingsController, Assembly-CSharp
+        m_MethodName: RebindRight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4050745906908604609
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,7 +1267,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4063341238453712913}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2110699402}
+        m_TargetAssemblyTypeName: SettingsController, Assembly-CSharp
+        m_MethodName: RebindLeft
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4554829710892982140
 GameObject:
   m_ObjectHideFlags: 0
@@ -1392,13 +1428,14 @@ GameObject:
   - component: {fileID: 6167673765634529621}
   - component: {fileID: 6301536045933712449}
   - component: {fileID: 9195118307175599926}
+  - component: {fileID: 2110699402}
   m_Layer: 5
   m_Name: SettingsMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &467347305356656858
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1482,7 +1519,56 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 7340151
+--- !u!114 &2110699402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4827764639430460551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b671363998000a9469c71750f173f0fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInput: {fileID: 0}
+  cancel: {fileID: 0}
+  save: {fileID: 0}
+  waitingForInputText: Waiting...
+  forwardsButton: {fileID: 3030352767830942551}
+  forwardsAction: {fileID: -7071317974969779950, guid: e0e11ab7d998c39459a456c6c460287c,
+    type: 3}
+  forwardsDisplay: {fileID: 5650684448307161225}
+  backwardsButton: {fileID: 6424739780469369692}
+  backwardsAction: {fileID: -7071317974969779950, guid: e0e11ab7d998c39459a456c6c460287c,
+    type: 3}
+  backwardsDisplay: {fileID: 5534730120952132628}
+  leftButton: {fileID: 8501568181303078435}
+  leftAction: {fileID: -7071317974969779950, guid: e0e11ab7d998c39459a456c6c460287c,
+    type: 3}
+  leftDisplay: {fileID: 2699981991964905563}
+  rightButton: {fileID: 5097160349685398925}
+  rightAction: {fileID: -7071317974969779950, guid: e0e11ab7d998c39459a456c6c460287c,
+    type: 3}
+  rightDisplay: {fileID: 4541918981385732084}
+  pauseButton: {fileID: 4529795730630210091}
+  pauseAction: {fileID: -2009048901334252160, guid: e0e11ab7d998c39459a456c6c460287c,
+    type: 3}
+  pauseDisplay: {fileID: 232628269579542264}
+  attackButton: {fileID: 8494769713299807316}
+  attackAction: {fileID: -3923658508053344051, guid: e0e11ab7d998c39459a456c6c460287c,
+    type: 3}
+  attackDisplay: {fileID: 4942662324709495398}
+  special1Button: {fileID: 0}
+  special1Action: {fileID: 0}
+  special1Display: {fileID: 0}
+  special2Button: {fileID: 0}
+  special2Action: {fileID: 0}
+  special2Display: {fileID: 0}
+  special3Button: {fileID: 0}
+  special3Action: {fileID: 0}
+  special3Display: {fileID: 0}
 --- !u!1 &4918004072424982022
 GameObject:
   m_ObjectHideFlags: 0
@@ -1604,7 +1690,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3091874987561430886}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2110699402}
+        m_TargetAssemblyTypeName: SettingsController, Assembly-CSharp
+        m_MethodName: RebindAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4962244241810800716
 GameObject:
   m_ObjectHideFlags: 0
@@ -1726,7 +1824,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3878257904949014937}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: HideSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5347016208822382133
 GameObject:
   m_ObjectHideFlags: 0
@@ -2294,7 +2404,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6910345986967612168}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2110699402}
+        m_TargetAssemblyTypeName: SettingsController, Assembly-CSharp
+        m_MethodName: RebindForwards
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6935887814883530602
 GameObject:
   m_ObjectHideFlags: 0
@@ -3096,7 +3218,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3629057423340919118}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2110699402}
+        m_TargetAssemblyTypeName: SettingsController, Assembly-CSharp
+        m_MethodName: RebindBackwards
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8744949794000494373
 GameObject:
   m_ObjectHideFlags: 0
