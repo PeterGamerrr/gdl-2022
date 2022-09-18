@@ -48,23 +48,17 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Trigger Enter");
         //Debug.LogWarning(collision.name);
         Debug.Log(collision.gameObject.tag == "Player");
         if (collision.gameObject.CompareTag("Enemy") && canDamageEnemy)
         {
             enemyHealthManager = collision.GetComponent<EnemyHealthManager>();
-
             enemyHealthManager.Damage(Damage);
-
-            Debug.Log("Damaged Enemy");
         } 
         if (collision.gameObject.CompareTag("Player") && canDamagePlayer)
         {
-            Debug.Log("Damaged Player before");
             healthController = collision.gameObject.GetComponentInParent<HealthController>();
             healthController.Damage(Damage);
-            Debug.Log("Damaged Player" + Damage);
             hitSound.Play();
         }
         if (!nonHittableTags.Contains(collision.gameObject.tag))

@@ -29,6 +29,18 @@ public class HealthController : MonoBehaviour
         Health -= amount;
         if (Health <= 0) Die();
     }
+    
+    public void Heal(int amount)
+    {
+        //TODO: ADD HEAL SOUND
+        hurtSound.Play();
+        
+        Health += amount;
+        if (Health > MaxHealth)
+        {
+            Health = MaxHealth;
+        }
+    }
 
     public void ResetHealth()
     {
@@ -37,7 +49,6 @@ public class HealthController : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("Die");
         DeathEvent.Invoke();
         ResetHealth();
     }

@@ -50,7 +50,6 @@ public class Ranged : MonoBehaviour
     {
         Vector3 fixedPosition = new Vector3(transform.position.x, transform.position.y, player.transform.position.z);
         Vector3 distance = fixedPosition - player.transform.position;
-        Debug.Log(distance.magnitude);
         return distance.magnitude;
     }
 
@@ -58,7 +57,6 @@ public class Ranged : MonoBehaviour
     {
         if (DistanceToPlayer() <= attackRange && !isAttacking)
         {
-            Debug.LogWarning("Within Attacking Range");
             StartCoroutine(AttackPlayer());
             isAttacking = true;
         }
@@ -71,7 +69,6 @@ public class Ranged : MonoBehaviour
 
     IEnumerator AttackPlayer()
     {
-        Debug.LogWarning("Started Player Attack");
         animator.SetBool("IsAttacking", true);
         yield return new WaitForSeconds(0.2f);
         shooting.Shoot();
