@@ -32,7 +32,6 @@ public class EnemyShooting : MonoBehaviour
 
     public void Shoot()
     {
-        Debug.LogWarning("Shoot Method Call");
         if (timeStamp <= Time.time)
         {
             Fire();
