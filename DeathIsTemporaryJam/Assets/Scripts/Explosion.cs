@@ -12,6 +12,7 @@ public class Explosion : MonoBehaviour
     [SerializeField] bool canDamageEnemy;
 
     [SerializeField] AudioSource explosionSound;
+    [SerializeField] GameObject explosionEffect;
 
     private Collider2D[] hitColliders;
     EnemyHealthManager healthManager;
@@ -22,10 +23,13 @@ public class Explosion : MonoBehaviour
 
     public void Explode()
     {
-        if (damage <= 0) return;
+        Debug.Log("Boom_0");
+        //if (damage <= 0) return;
         explosionSound.Play();
-        hitColliders = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), range);
-
+        Vector2 explosionPos = new Vector2(transform.position.x, transform.position.y);
+        Instantiate(explosionEffect, explosionPos, transform.rotation);
+        hitColliders = Physics2D.OverlapCircleAll(explosionPos, range);
+        Debug.Log("Boom_1");
         foreach (Collider2D collider in hitColliders)
         {
             if (collider.gameObject.CompareTag("Enemy") && canDamageEnemy)
@@ -39,6 +43,7 @@ public class Explosion : MonoBehaviour
                 healthController.Damage(damage);
             }
         }
- 
+        Destroy(gameObject);
+        Debug.Log("Boom_2");
     }
 }

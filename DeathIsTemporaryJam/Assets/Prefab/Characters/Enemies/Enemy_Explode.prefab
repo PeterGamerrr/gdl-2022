@@ -263,6 +263,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   health: 50
+  damageColorTime: 0.15
+  isPoisoned: 0
 --- !u!114 &-3663007773628491678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,6 +299,7 @@ MonoBehaviour:
   canDamagePlayer: 1
   canDamageEnemy: 0
   explosionSound: {fileID: 2133683564168613985}
+  explosionEffect: {fileID: 0}
 --- !u!58 &333950506941810556
 CircleCollider2D:
   m_ObjectHideFlags: 0

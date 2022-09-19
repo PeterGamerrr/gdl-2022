@@ -277,6 +277,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   health: 50
+  damageColorTime: 0.15
+  isPoisoned: 0
 --- !u!114 &1227095873999640543
 MonoBehaviour:
   m_ObjectHideFlags: 0

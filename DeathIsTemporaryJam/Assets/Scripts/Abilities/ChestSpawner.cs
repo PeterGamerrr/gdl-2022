@@ -31,7 +31,6 @@ public class ChestSpawner : MonoBehaviour
 
     public void DestroyChest()
     {
-        Debug.Log("destroying chest_2");
         activeChest.DestroyChest();
     }
 

@@ -165,7 +165,7 @@ MonoBehaviour:
   ExplosionDamage: 0
   canDamagePlayer: 0
   canDamageEnemy: 1
-  hasExplosion: 1
+  hasExplosion: 0
   hitSound: {fileID: 6405491696691823}
   nonHittableTags:
   - Bullet
@@ -188,6 +188,8 @@ MonoBehaviour:
   canDamagePlayer: 0
   canDamageEnemy: 1
   explosionSound: {fileID: 5144520868809878170}
+  explosionEffect: {fileID: 5875609879034742182, guid: 988104a2f9dc3c24f983a85f80cd1176,
+    type: 3}
 --- !u!82 &6405491696691823
 AudioSource:
   m_ObjectHideFlags: 0

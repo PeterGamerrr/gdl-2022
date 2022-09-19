@@ -4980,6 +4980,8 @@ MonoBehaviour:
   canDamagePlayer: 0
   canDamageEnemy: 1
   explosionSound: {fileID: 5521744699619342657}
+  explosionEffect: {fileID: 5875609879034742182, guid: 988104a2f9dc3c24f983a85f80cd1176,
+    type: 3}
 --- !u!82 &5521744699619342657
 AudioSource:
   m_ObjectHideFlags: 0

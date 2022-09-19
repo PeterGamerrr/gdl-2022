@@ -18,6 +18,7 @@ public class Shooting : MonoBehaviour
     [SerializeField] int amountOfBullets;
     [SerializeField] int damage;
     [SerializeField] int piercing;
+    [SerializeField] public bool hasExplosion;
 
     private Vector2 direction;
 
@@ -31,6 +32,8 @@ public class Shooting : MonoBehaviour
     private int damageMul = 0;
     private int explosionMul = 0;
     Quaternion shootRotation;
+
+    public int explosionDamage;
 
     private bool toggleShooting = false;
 
@@ -94,12 +97,14 @@ public class Shooting : MonoBehaviour
         shootRotation = RotateTowardsMouse();
         bulletObject = Instantiate(bullet, shootingPoint.position, shootRotation, bulletParent); 
         bulletScript = bulletObject.GetComponent<Bullet>();
+        bulletScript.hasExplosion = hasExplosion;
         bulletScript.Damage = damage + (int) (damage * 0.2 * damageMul);
-        bulletScript.Piercing = piercing + piercingMul; 
-        bulletScript.ExplosionDamage = explosionMul * 5;
+        bulletScript.Piercing = piercing + piercingMul;
+        bulletScript.ExplosionDamage = explosionDamage;
         bulletRB = bulletObject.GetComponent<Rigidbody2D>();
         bulletRB.AddForce(direction.normalized * bulletSpeed + playerController.movementVel);
         GameManager.Instance.Bullets.Add(bulletObject);
+        hasExplosion = false;
     }
 
     Quaternion RotateTowardsMouse()
