@@ -49,7 +49,6 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Debug.LogWarning(collision.name);
-        Debug.Log(collision.gameObject.tag == "Player");
         if (collision.gameObject.CompareTag("Enemy") && canDamageEnemy)
         {
             enemyHealthManager = collision.GetComponent<EnemyHealthManager>();
